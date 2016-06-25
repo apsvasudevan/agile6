@@ -54,7 +54,7 @@
 * See trello for details - * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
 
 ##### Ordered Backlog Rationale
-* Fill in the rationale soon
+* Fill in the rationale soon - checking in the branch
 
 
 
