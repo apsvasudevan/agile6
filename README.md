@@ -14,7 +14,7 @@
 ##### Team Roster
 * Truman Ta
 * Christian Schlubach
-* Nick Ruta
+* Nicholas Ruta
 * Brian Feeny
 * Oyin Shenbanjo
 * Vasu Swamidurai
