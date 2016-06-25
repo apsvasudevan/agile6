@@ -5,6 +5,9 @@
 ##### Team name 
 * agile6 
 
+##### Slack Channel
+* agile6
+
 ##### Git repo url for the team
 * [agile 6](https://github.com/apsvasudevan/agile6)
 
@@ -15,6 +18,11 @@
 * Brian Feeny
 * Oyin Shenbanjo
 * Vasu Swamidurai
+
+##### Team Roles (in addition to dev team)
+* Product Owner:
+* Scrum Master: 
+
 
 ##### Open Source Product Name
 * 
