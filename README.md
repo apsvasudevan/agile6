@@ -60,7 +60,20 @@
 * See trello for details - * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
 
 ##### Ordered Backlog Rationale
-* 
+We considered a few approaches for ordering Product Backlog Items (PBI) including the 20/20 vision game, dot voting (dotmocracy) and the decider protocol. We chose to use the decider protocol as a team. 
+
+We started by classifying our stories into three buckets. They were “authentication” for features that related to application access, “commons” for common features including building blocks, and “Core Protocols” for features that enabled us to empower remote teams to implement the Core Protocols. This classification allowed us to identify the PBIs that belonged to the Minimal Viable Product (MVP).
+
+The authentication features included the basic building blocks of web applications such as user sign up using email and social media, user sign in / sign out, and a mechanism to retrieve forgotten passwords. 
+
+The common features included dashboard, email notification system, team creation, the addition of team members to a team, and the creation of sessions for a team.
+
+The crux of the open source product are the Core Protocols features. This included the Check-In, Check-Out, and Passer protocols. Future implementations will include other Core Protocols. 
+
+With the classification of features complete, we looked at each bucket. We determined the order within each of the three buckets by using the concept of “Dependencies.” The more advanced features were dependent on the building blocks. 
+
+With the dependent features ordered appropriately within each of the three buckets and a clear picture of the Product Backlog, we were able to complete the ordering process by using the decider protocol. The product owner, Nicholas Ruta, stated “I propose that we order the three buckets by putting authentication first, commons second and core protocols third so that the building blocks are in place before we implement the crux of the product. 1…2…3.” The other members of the team showed positive visual acceptance and the ordering of the product backlog was complete.
+
 
 
 
