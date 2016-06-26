@@ -1,6 +1,6 @@
 # agile6
 ##### Description 
-* Repo for agile 6 team from Summer 2016 Agile Software Development course
+* Repo for the agile6 team from the Summer 2016 Agile Software Development course.
 
 ##### Team name 
 * agile6 
@@ -17,32 +17,38 @@
 * Nicholas Ruta
 * Brian Feeny
 * Oyin Shenbanjo
-* Vasu Swamidurai
+* Vasudevan Swamidurai
 
 ##### Team Roles (in addition to dev team)
-* Product Owner:
-* Scrum Master: 
-
+* Product Owner: Nicholas Ruta
+* Scrum Master: Vasudevan Swamidurai
+* Dev Team: Brian Feeny, Truman Ta, Christian Schlubach, Oyin Shenbanjo
 
 ##### Open Source Product Name
-* 
+* TeamSpirit
 
 ##### Far Vision
-* 
+* Every remotely connected agile team living in greatness.
 
 ##### Near Vision
-* 
+* Agile teams implementing the Check In, Check Out and Decider Core Protocols from different places around the world.
 
 ##### Three types of stakeholders
-* 
-* 
-* 
+* Scrum Master - Facilitator of Scrum Ceremonies
+* Product Owner
+* Engineers
 
-##### Stakeholders name
-* 
+##### Real Person Stakeholders name
+* Elon Musk 
 
-##### User Persona for 
-* 
+##### User Persona for Elon Musk
+* Name - Elon Musk
+* Role - Product Owner
+* Photo - ![elon musk](https://en.wikipedia.org/wiki/Elon_Musk#/media/File:Elon_Musk_2015.jpg) 
+* Vital Stats - 44 years old. Married with 5 kids. Lives in Los Angeles, CA. He is a futuristic thinker that cares about our environment and carbon footprint. In order to achieve his goals, he runs multiple companies. He is very busy and under a lot of stress.
+* Important Attributes - He runs multiple companies in different locations on a daily basis. He works as a CEO, CTO and Product Architect and focuses on the technical details. He needs to communicate and create synergy with several teams with members located all over the world. 
+* Motivation - He deeply wants to help out mankind, while also proving that he is a special person who is deserving of love and adulation. 
+* Desires Wants Needs - He needs to feel connected with his teams. He needs to make the most productive teams in order to reach his business goals. He wants to have frequent interactions with them using Core Protocols like Check In, Check Out and Decider. He desires to have streamlined communications in order to have maximum impact due to time constraints.
 
 ##### Product Backlog
 * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
@@ -54,7 +60,7 @@
 * See trello for details - * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
 
 ##### Ordered Backlog Rationale
-* Fill in the rationale soon - checking in the branch
+* 
 
 
 
