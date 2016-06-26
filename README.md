@@ -19,7 +19,7 @@
 * Oyin Shenbanjo
 * Vasudevan Swamidurai
 
-##### Team Roles (in addition to dev team)
+##### Team Roles
 * Product Owner: Nicholas Ruta
 * Scrum Master: Vasudevan Swamidurai
 * Dev Team: Brian Feeny, Truman Ta, Christian Schlubach, Oyin Shenbanjo
@@ -31,7 +31,7 @@
 * Every remotely connected agile team living in greatness.
 
 ##### Near Vision
-* Agile teams implementing the Check In, Check Out and Decider Core Protocols from different places around the world.
+* Agile teams implementing the Check In, Check Out and Passer Core Protocols from different places around the world.
 
 ##### Three types of stakeholders
 * Scrum Master - Facilitator of Scrum Ceremonies
