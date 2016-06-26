@@ -44,7 +44,7 @@
 ##### User Persona for Elon Musk
 * Name - Elon Musk
 * Role - Product Owner
-* Photo - ![elon musk](https://en.wikipedia.org/wiki/Elon_Musk#/media/File:Elon_Musk_2015.jpg) 
+* Photo - ![elon musk](https://upload.wikimedia.org/wikipedia/commons/4/49/Elon_Musk_2015.jpg) 
 * Vital Stats - 44 years old. Married with 5 kids. Lives in Los Angeles, CA. He is a futuristic thinker that cares about our environment and carbon footprint. In order to achieve his goals, he runs multiple companies. He is very busy and under a lot of stress.
 * Important Attributes - He runs multiple companies in different locations on a daily basis. He works as a CEO, CTO and Product Architect and focuses on the technical details. He needs to communicate and create synergy with several teams with members located all over the world. 
 * Motivation - He deeply wants to help out mankind, while also proving that he is a special person who is deserving of love and adulation. 
