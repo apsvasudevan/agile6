@@ -28,7 +28,7 @@
 * TeamSpirit
 
 ##### Far Vision
-* Every remotely connected agile team living in greatness.
+* Every remote agile team living in greatness.
 
 ##### Near Vision
 * Agile teams implementing the Check In, Check Out and Passer Core Protocols from remote locations.
