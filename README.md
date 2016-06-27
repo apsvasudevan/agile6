@@ -46,7 +46,7 @@
 * Role - Product Owner
 * Photo - <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Elon_Musk_2015.jpg" width="253px" height="371px" />
 * Vital Stats - 44 years old. Married with 5 kids. Lives in Los Angeles, CA. He is a futuristic thinker that cares about our environment and carbon footprint. In order to achieve his goals, he runs multiple companies. He is very busy and under a lot of stress.
-* Important Attributes - He runs multiple companies in different locations on a daily basis. He works as a CEO, CTO and Product Architect and focuses on the technical details. He needs to communicate and create synergy with several teams with members located all over the world. 
+* Important Attributes - He runs multiple companies in different locations on a daily basis. He works as a CEO, CTO and Product Architect and focuses on the technical details. He needs to communicate and create synergy with several teams with members located all over the world. His main device is a mobile phone, using both an Apple iPhone 6s and an Android Samsung Galaxy, and his secondary device is an Apple macbook pro laptop computer. 
 * Motivation - He deeply wants to help out mankind, while also proving that he is a special person who is deserving of love and adulation. 
 * Desires Wants Needs - He needs to feel connected with his teams. He needs to make the most productive teams in order to reach his business goals. He wants to have frequent interactions with them using Core Protocols like Check In, Check Out and Decider. He desires to have streamlined communications in order to have maximum impact due to time constraints.
 
