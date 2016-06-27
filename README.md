@@ -31,7 +31,7 @@
 * Every remotely connected agile team living in greatness.
 
 ##### Near Vision
-* Agile teams implementing the Check In, Check Out and Passer Core Protocols from different places around the world.
+* Agile teams implementing the Check In, Check Out and Passer Core Protocols from remote locations.
 
 ##### Three types of stakeholders
 * Scrum Master - Facilitator of Scrum Ceremonies
