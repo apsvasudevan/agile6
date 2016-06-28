@@ -1,3 +1,5 @@
+##### Team formation, product launch, and initial product backlog
+
 # agile6
 ##### Description 
 * Repo for the agile6 team from the Summer 2016 Agile Software Development course.
@@ -68,12 +70,36 @@ The authentication features included the basic building blocks of web applicatio
 
 The common features included dashboard, email notification system, team creation, the addition of team members to a team, and the creation of sessions for a team.
 
-The crux of the open source product are the Core Protocols features. This included the Check-In, Check-Out, and Passer protocols. Future implementations will include other Core Protocols. 
+The crux of the open source product are the Core Protocols features. This included the Check-In, Check-Out, and Passer protocols. Future implementations will include other Core Protocols.
 
 With the classification of features complete, we looked at each bucket. We determined the order within each of the three buckets by using the concept of “Dependencies.” The more advanced features were dependent on the building blocks. 
 
 With the dependent features ordered appropriately within each of the three buckets and a clear picture of the Product Backlog, we were able to complete the ordering process by using the decider protocol. The product owner, Nicholas Ruta, stated “I propose that we order the three buckets by putting authentication first, commons second and core protocols third so that the building blocks are in place before we implement the crux of the product. 1…2…3.” The other members of the team showed positive visual acceptance and the ordering of the product backlog was complete.
 
+
+##### Backlog estimating and Sprint Planning
+
+##### Estimation of PBIs 
+* Completed estimation of PBIs, See trello for details - * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+
+
+##### Estimation of PBIs in story points
+* We used the poker cards from class and the wideband delphi process. On Trello, we used the scrum plugin to show the points for each story. 
+* See trello for details - * [Trello link for product backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+* [See this link for the points in detail](https://files.slack.com/files-pri/T1K0D9MU5-F1LR5BZ55/pointestimationprocess.png)
+
+##### Whole team relative size estimating activity
+* Pointing Poker Session
+
+##### Only Development Team members participated in creating the estimates.
+* The Scrum Master Vasu Swamidurai facilitated an estimation session in which the developers, Brian Feeny, Truman Ta, Christian Schlubach, Oyin Shenbanjo, did the point estimations. The product owner, Nicholas Ruta, was available to answer any questions about the stories during the estimation process. 
+
+##### Forecast of story points that our team can complete during the sprint
+* 50 points
+
+##### Forecast rationale
+* The forecast was based on the skillsets of the team members, the complexity of the project and the limited time availability of the team members. 
+* The process of setting up the initial environment offered us a baseline metric to determine the overall workload.
 
 
 
