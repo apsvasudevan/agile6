@@ -34,9 +34,9 @@
 * Agile teams implementing the Check In, Check Out and Passer Core Protocols from remote locations.
 
 ##### Three types of stakeholders
-* Scrum Master - Facilitator of Scrum Ceremonies
+* Scrum Master - As the facilitator of Scrum Ceremonies
 * Product Owner
-* Engineers
+* Software Developers
 
 ##### Real Person Stakeholders name
 * Elon Musk 
