@@ -95,11 +95,26 @@ With the dependent features ordered appropriately within each of the three bucke
 * The Scrum Master Vasu Swamidurai facilitated an estimation session in which the developers, Brian Feeny, Truman Ta, Christian Schlubach, Oyin Shenbanjo, did the point estimations. The product owner, Nicholas Ruta, was available to answer any questions about the stories during the estimation process. 
 
 ##### Forecast of story points that our team can complete during the sprint
-* 50 points
+* 90 points
 
 ##### Forecast rationale
 * The forecast was based on the skillsets of the team members, the complexity of the project and the limited time availability of the team members. 
 * The process of setting up the initial environment offered us a baseline metric to determine the overall workload.
+
+##### Sprint Backlog
+* [See this link for the sprint backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+* We pulled stories into our spring backlog and still have a few items left in our product backlog.
+* Our forecast is 90 points and our aggregate size is 85 points for the first sprint.
+* The Scrum Master Vasu Swamidurai facilitated the sprint planning in which the developers, Brian Feeny, Truman Ta, Christian Schlubach, Oyin Shenbanjo, did the decomposition of stories into tasks. The product owner, Nicholas Ruta, was available to answer any questions about the stories during the sprint planning session.
+* Our maximum story point is 13 points which is less than half of the forecasted velocity. 
+* We broke down several larger PBIs into smaller stories.
+* Stories are decomposed into tasks and are listed on the sprint backlog.
+* Our sprint backlog is represented as a kanban board. [See this link for the kanban sprint backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+
+
+##### Burndown Chart
+* [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
+* We have a sprint burndown chart. On the x-axis, we display time markers in units of 1 day. On the y-axis, we display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in our sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint.
 
 
 
