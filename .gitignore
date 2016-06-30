@@ -1,2 +1,7 @@
 db.sqlite3
 coreprotocols/db.sqlite3
+*.pyc
+*.swp
+logs/
+migrations/
+fixtures/
