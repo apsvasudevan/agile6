@@ -5,7 +5,15 @@
 </head>
 <body>
 hi there, {{ request.user.username }}<br/>
-<a href="/logout/">log out</a>
-
+<a href="/logout/">log out</a><br/>
+<a href="{% url 'team_create' %}">create team</a><br/>
+<p>
+Teams:
+<ul>
+{% for t in context.teams %}
+<li>{{ t.name }}</li>
+{% endfor %}
+</ul>
+</p>
 </body>
 </html>
