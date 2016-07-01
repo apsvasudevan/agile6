@@ -2,6 +2,7 @@
 # Create your tests here.
 from django.test import LiveServerTestCase
 from selenium import webdriver
+import unittest
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 
@@ -96,3 +97,5 @@ class AdminTestAfterLogin(LiveServerTestCase):
          teams_links = self.browser.find_elements_by_link_text('Teams')
          self.assertEquals(len(teams_links), 1)
 
+if __name__ == '__main__':  #7
+    unittest.main(warnings='ignore')  #
