@@ -4,7 +4,7 @@
 ##### Description 
 * Repo for the agile6 team from the Summer 2016 Agile Software Development course.
 
-##### Team name 
+##### Team name
 * agile6 
 
 ##### Slack Channel
@@ -117,4 +117,12 @@ With the dependent features ordered appropriately within each of the three bucke
 * We have a sprint burndown chart. On the x-axis, we display time markers in units of 1 day. On the y-axis, we display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in our sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint.
 
 
+##### Start sprinting
 
+
+##### Updated Sprint Backlog task board and burndown chart.
+* [See this link for the sprint backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+* [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
+
+##### Evidence that we paired or mobbed on our code.
+* <img src="https://files.slack.com/files-tmb/T1K0D9MU5-F1N07U24C-baa741f0c9/2016-06-29_21.38.55_1024.jpg" width="512px" height="384px" />
