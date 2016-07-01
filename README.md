@@ -125,4 +125,4 @@ With the dependent features ordered appropriately within each of the three bucke
 * [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
 
 ##### Evidence that we paired or mobbed on our code.
-* <img src="https://files.slack.com/files-tmb/T1K0D9MU5-F1N07U24C-baa741f0c9/2016-06-29_21.38.55_1024.jpg" width="512px" height="384px" />
+* <img src="https://github.com/apsvasudevan/agile6/blob/master/mog_programming_agile6.jpg?raw=true" width="512px" height="384px" />
