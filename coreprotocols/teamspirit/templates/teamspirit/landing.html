@@ -11,7 +11,7 @@ hi there, {{ request.user.username }}<br/>
 Teams:
 <ul>
 {% for t in context.teams %}
-<li>{{ t.name }}</li>
+<li><a href="/team/addmember/{{t.id}}"> {{ t.name }}</li>
 {% endfor %}
 </ul>
 </p>
