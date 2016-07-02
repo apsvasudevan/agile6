@@ -6,27 +6,18 @@
 </head>
 <body>
     <div>
-	        <h3>Add Members To Team</h3>
+	        <h3>Add Members To Team: {{ context.team.name }}</h3>
 				<form action="" method="post">{% csrf_token %}
 				{{ form.non_field_errors }}
 
 				<table class="table">
 
 				<tr class="fieldWrapper">
-				<td>
-				    <b>Name</b>: 
-				</td>
-				<td>
-				    {{ form.name }}
-				    {{ form.name.errors }}
-				</td>
 					<td>
-				    <b>Team Member Name</b>:
-				</td>
-				<td>
-				    {{ form.name }}
-				    {{ form.name.errors }}
-				</td>
+						<b>Team Member Name</b>:
+						{{ form.members }}
+						{{ form.members.errors }}
+					</td>
 				</tr>
 				</table>
 

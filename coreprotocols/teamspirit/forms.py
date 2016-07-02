@@ -6,5 +6,5 @@ from django.forms import ModelForm
 class TeamForm(ModelForm):
 
     class Meta:
-        model  = Team
+        model   = Team
         exclude = []
