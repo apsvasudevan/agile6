@@ -11,6 +11,12 @@ def landing_page(request):
     context['teams'] = Team.objects.all().order_by('name')
     return render(request, 'teamspirit/landing.html', { "context" : context })
 
+@login_required
+def dashboard(request):
+    context = {}
+    context['teams'] = Team.objects.all().order_by('name')
+    return render(request, 'teamspirit/dashboard.html', { "context" : context })
+
 def sign_up(request):
 
     if request.method == 'POST': # If the form has been submitted...
