@@ -6,4 +6,3 @@ logs/
 migrations/
 fixtures/
 .idea/
-coreprotocols/.coverage
