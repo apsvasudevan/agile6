@@ -5,4 +5,4 @@ coreprotocols/db.sqlite3
 logs/
 migrations/
 fixtures/
-coreprotocols/.coverage
+.idea/

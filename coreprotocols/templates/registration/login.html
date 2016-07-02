@@ -9,19 +9,22 @@
 </head>
 
 <body>
-
+<div class="page-header">
+  <h2 align="center">Team Spirit</h2>
+	<h2 align="center"><small>Agile 6</small></h2>
+</div>
 <div class="container">
 
 	<form class="form-signin" action="" method="post">
 		{% csrf_token %}
-		<label for="inputEmail" class="sr-only">Email address</label>
+		<label for="inputEmail" class="sr-only">Username</label>
 		<input width="30" class="form-control" type="text" id="id_username" name="username" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input class="form-control" type="password"  id="id_password" name="password" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 	</form>
-</div> <!-- /container -->
 
+</div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

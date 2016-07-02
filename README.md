@@ -4,7 +4,7 @@
 ##### Description 
 * Repo for the agile6 team from the Summer 2016 Agile Software Development course.
 
-##### Team name 
+##### Team name
 * agile6 
 
 ##### Slack Channel
@@ -115,6 +115,33 @@ With the dependent features ordered appropriately within each of the three bucke
 ##### Burndown Chart
 * [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
 * We have a sprint burndown chart. On the x-axis, we display time markers in units of 1 day. On the y-axis, we display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in our sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint.
+
+
+##### Start sprinting
+
+
+##### Updated Sprint Backlog task board and burndown chart.
+* [See this link for the sprint backlog](https://trello.com/b/EE5wZaYY/product-backlog)
+* [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
+
+##### Evidence that we paired or mobbed on our code.
+* <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6.jpg?raw=true" width="512px" height="384px" />
+
+
+##### Evidence that we are building our product test-first. Here are at least 10 unit tests in our test suite. They all pass.
+
+The tests file for our project can be view on github at - [See this link for the tests file](https://github.com/apsvasudevan/agile6/blob/master/coreprotocols/teamspirit/tests.py)
+
+* Here is proof of the 10+ unit tests currently in our suite -
+<img src="https://github.com/apsvasudevan/agile6/blob/master/tests_1.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/tests_2.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/tests_3.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/tests_4.png?raw=true"/>
+
+
+
+
+
 
 
 
