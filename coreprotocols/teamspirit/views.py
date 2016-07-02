@@ -29,19 +29,24 @@ def team_create(request):
 
 @login_required
 def add_member(request, pk):
+    team = Team.objects.get(id=pk)
     context = {}
+    context['team'] = team
     context['users'] = User.objects.all().order_by('name')
     if request.method == 'POST': # If the form has been submitted...
         data = request.POST.copy()
-        data['owner'] = request.user.id
-        data.setlist( 'members', [request.user.id] )
-        form = TeamForm(data) # A form bound to the POST data
+        data['owner'] = team.owner.id
+        data['name']  = team.name
+        form = TeamForm(data, instance=team) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
             return redirect('landing_page')
         else:
             pass
     else:
+        formData = {
+            'members' : team.members,
+        }
         form = TeamForm() # An unbound form
 
-    return render(request, 'teamspirit/add_member.html', { "form" : form })
+    return render(request, 'teamspirit/add_member.html', { "form" : form, 'context':context })
