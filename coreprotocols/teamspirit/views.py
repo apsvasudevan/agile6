@@ -54,8 +54,8 @@ def team_create(request):
         data.setlist( 'members', [request.user.id] )
         form = TeamForm(data) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
-            form.save()
-            return redirect('dashboard')
+            new_team = form.save()
+            return redirect('/team/member/add/' + str(new_team.id))
         else:
             pass
     else:
@@ -76,7 +76,7 @@ def member_add(request, pk):
         form = TeamForm(data, instance=team) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
-            return redirect('dashboard')
+            return redirect('/team/session/add/' + str(team.id))
         else:
             pass
     else:
