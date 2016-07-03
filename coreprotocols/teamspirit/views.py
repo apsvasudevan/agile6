@@ -4,7 +4,7 @@ from teamspirit.forms import TeamForm, SignUpForm, SessionForm
 from teamspirit.models import Team
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-
+from django.db.models import Q
 
 def landing_page(request):
     context = {}
@@ -15,7 +15,8 @@ def landing_page(request):
 @login_required
 def dashboard(request):
     context = {}
-    context['teams'] = Team.objects.all().order_by('name')
+    context['teams_i_own'] = Team.objects.filter(owner=request.user).order_by('name')
+    context['teams_i_am_member_of'] = Team.objects.filter(members=request.user).exclude(owner=request.user).order_by('name')
     return render(request, 'teamspirit/dashboard.html', { "context" : context })
 
 def sign_up(request):
@@ -36,7 +37,7 @@ def sign_up(request):
                                     password=form.cleaned_data['password'],
                                     )
             login(request, auth_user)
-            return redirect('landing_page')
+            return redirect('dashboard')
         else:
             pass
     else:       
@@ -53,7 +54,7 @@ def team_create(request):
         form = TeamForm(data) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
-            return redirect('landing_page')
+            return redirect('dashboard')
         else:
             pass
     else:
@@ -74,14 +75,15 @@ def member_add(request, pk):
         form = TeamForm(data, instance=team) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
-            return redirect('landing_page')
+            return redirect('dashboard')
         else:
             pass
     else:
         formData = {
-            'members' : team.members,
+            'members' : team.members.all(),
         }
-        form = TeamForm() # An unbound form
+
+        form = TeamForm(initial=formData) # An unbound form
 
     return render(request, 'teamspirit/member_add.html', { "form" : form, 'context':context })
 
