@@ -6,5 +6,7 @@ urlpatterns = [
     url(r'team/create/$', views.team_create,  name='team_create'),
     url(r'team/signup/$', views.sign_up,  name='sign_up'),
     url(r'dashboard/$', views.dashboard, name='dashboard'),
-    url(r'team/addmember/(?P<pk>.+)$', views.add_member, name='add_member'),
+    url(r'team/member/add/(?P<pk>.+)$', views.member_add, name='member_add'),
+    url(r'team/session/add/(?P<pk>.+)$', views.session_add, name='session_add'),
+
 ]

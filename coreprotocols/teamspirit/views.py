@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from teamspirit.forms import TeamForm, SignUpForm
+from teamspirit.forms import TeamForm, SignUpForm, SessionForm
 from teamspirit.models import Team
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -63,7 +63,7 @@ def team_create(request):
     return render(request, 'teamspirit/team_create.html', { "form" : form })
 
 @login_required
-def add_member(request, pk):
+def member_add(request, pk):
     team = Team.objects.get(id=pk)
     context = {}
     context['team'] = team
@@ -85,4 +85,23 @@ def add_member(request, pk):
 
         form = TeamForm(initial=formData) # An unbound form
 
-    return render(request, 'teamspirit/add_member.html', { "form" : form, 'context':context })
+    return render(request, 'teamspirit/member_add.html', { "form" : form, 'context':context })
+
+@login_required
+def session_add(request, pk):
+    team = Team.objects.get(id=pk)
+    context = {}
+    context['team'] = team
+    if request.method == 'POST': # If the form has been submitted...
+        data = request.POST.copy()
+        data['team'] = team.id
+        form = SessionForm(data) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            form.save()
+            return redirect('dashboard')
+        else:
+            pass
+    else:
+        form = SessionForm() # An unbound form
+
+    return render(request, 'teamspirit/session_create.html', { "form" : form, 'context':context })
