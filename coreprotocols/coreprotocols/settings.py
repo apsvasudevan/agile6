@@ -122,5 +122,5 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 STATIC_ROOT = '/usr/share/nginx/html/static/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/login/'

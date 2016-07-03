@@ -5,11 +5,12 @@ from teamspirit.models import Team
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
-@login_required
+
 def landing_page(request):
     context = {}
     context['teams'] = Team.objects.all().order_by('name')
     return render(request, 'teamspirit/landing.html', { "context" : context })
+
 
 @login_required
 def dashboard(request):

@@ -31,7 +31,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url('^', include('django.contrib.auth.urls')),
-
     url(r'^', include('teamspirit.urls')),
 ]
