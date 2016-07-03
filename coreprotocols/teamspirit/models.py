@@ -24,6 +24,7 @@ class Team(models.Model):
 class Session(models.Model):
     team       = models.ForeignKey(Team, related_name="session_team")
     name       = models.CharField(max_length=100)
+    is_open    = models.BooleanField(default=True)
     start_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):   
