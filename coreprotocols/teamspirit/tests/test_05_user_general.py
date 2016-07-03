@@ -16,39 +16,46 @@ class Test05UserGeneral(LiveServerTestCase):
     def test_user_pages_login(self):
 
         # 1. User can get /user URL
-        self.browser.get(self.live_server_url + '/team/signup/')
+        self.browser.get(self.live_server_url + '/')
 
         # 2. User sees the appropriate page
-        self.assertIn('Sign UP', self.browser.title)
+        self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
-        # 3. User fills in Username field
+        # 3. User presses Sign Up button
+        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/div/div/p[2]/a[1]').click()
+
+        # 4. User confirms they are on the sign up page
+        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
+        self.assertIn('Sign up using your email', result.text)
+
+        # 5. User fills in Username field
         username_field = self.browser.find_element_by_name('username')
         username_field.send_keys('user')
 
-        # 4. User fills in Email field
+        # 6. User fills in Email field
         email_field = self.browser.find_element_by_name('email')
         email_field.send_keys('user@somewhere.com')
 
-        # 5. User fills in Password field
+        # 7. User fills in Password field
         password_field = self.browser.find_element_by_name('password')
         password_field.send_keys('m3@nt!m3')
 
-        # 6. User fills in First Name field
+        # 8. User fills in First Name field
         first_name_field = self.browser.find_element_by_name('first_name')
         first_name_field.send_keys('Some')
 
-        # 7. User fills in Last Name field
+        # 9. User fills in Last Name field
         last_name_field = self.browser.find_element_by_name('last_name')
         last_name_field.send_keys('One')
 
-        # 8. User clicks on sign up button
-        self.browser.find_element_by_xpath('/html/body/div/div/form/input[2]').click()
+        # 9. User clicks on sign up button
+        self.browser.find_element_by_xpath('/html/body/div/div/div/div/form/input[2]').click()
 
-        # 9. User find themselves on the correct page
+        # 10. User find themselves on the correct page
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
-        # 10. User logs out
-        self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
+        # 11. User logs out
+        self.browser.find_element_by_xpath('//html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
 
         # # 5. Admin types in the username and passwords and hits return
         # username_field = self.browser.find_element_by_name('username')
