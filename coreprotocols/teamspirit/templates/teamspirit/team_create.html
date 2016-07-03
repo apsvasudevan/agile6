@@ -61,11 +61,20 @@
           </div>
         </nav>
 
-      <!-- </div>
-    </div> -->
+  <div class='page-form'>
+        <h3>Create Team</h3>
+        <form action="" method="post">{% csrf_token %}
+        {{ form.non_field_errors }}
+        <b>Name</b>: {{ form.name }}
+            {{ form.name.errors }}
+
+        <input type="submit" class="btn btn-primary" value="Submit" />
+        <a href="{% url 'dashboard' %}"><button class="btn btn-info">Cancel</button></a>
+        </form>
+  </div>
 
 
-    <div>
+<!--     <div>
 
 	        <h3>Create Team</h3>
 				<form action="" method="post">{% csrf_token %}
@@ -88,7 +97,7 @@
 				</form>
 				<a href="{% url 'dashboard' %}"><button class="btn btn-info">Cancel</button></a>
 
-	</div>
+	</div> -->
 
      
 
