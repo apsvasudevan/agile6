@@ -51,8 +51,8 @@ class Test05UserGeneral(LiveServerTestCase):
         # 10. User checks box to accept Core Protocols
         self.browser.find_element_by_id('protocol1').click()
 
-        # 11. User clicks on sign up button
-        self.browser.find_element_by_xpath('/html/body/div/div/div/div/form/input[2]').click()
+        # 11. User clicks on Submit button
+        self.browser.find_element_by_xpath('//html/body/div/div/div/div/form/div[6]/input').click()
 
         # 12. User find themselves on the correct page
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
@@ -61,7 +61,7 @@ class Test05UserGeneral(LiveServerTestCase):
         self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
 
         # 14. User Presses Sign In button
-        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/div/div/p[2]/a[2]').click()
+        self.browser.find_element_by_xpath('/html/body/div[1]/div/div/div/div/p[2]/a[2]').click()
 
         # 15. User fills in Username field
         username_field = self.browser.find_element_by_id('id_username')
