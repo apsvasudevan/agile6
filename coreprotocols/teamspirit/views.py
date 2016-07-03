@@ -98,7 +98,7 @@ def session_add(request, pk):
         form = SessionForm(data) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
-            return redirect('landing_page')
+            return redirect('dashboard')
         else:
             pass
     else:

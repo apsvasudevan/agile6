@@ -70,14 +70,14 @@
             Teams I Own:
             <ul class="teamList">
             {% for t in context.teams_i_own %}
-              <li>{{ t.name }} <a href="/team/addmember/{{t.id}}">[add member]</a> [start session]</li>
+                <li>{{ t.name }} <a href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;<a href="{% url 'session_add' t.id %}">[add session]</a></li>
             {% endfor %}
             </ul>
 
             Teams I am a Member Of:
             <ul class="teamList">
             {% for t in context.teams_i_am_member_of %}
-              <li><a href="/team/addmember/{{t.id}}">{{ t.name }}</a></li>
+              <li>{{ t.name }}</li>
             {% endfor %}
             </ul>
 
