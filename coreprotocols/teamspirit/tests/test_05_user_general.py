@@ -15,7 +15,7 @@ class Test05UserGeneral(LiveServerTestCase):
 
     def test_user_pages_login(self):
 
-        # 1. User can get /user URL
+        # 1. User can get main URL
         self.browser.get(self.live_server_url + '/')
 
         # 2. User sees the appropriate page
@@ -56,3 +56,20 @@ class Test05UserGeneral(LiveServerTestCase):
 
         # 11. User logs out
         self.browser.find_element_by_xpath('//html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
+
+        # 12. User Presses Sign In button
+        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/div/div/p[2]/a[2]').click()
+
+        # 13. User fills in Username field
+        username_field = self.browser.find_element_by_id('id_username')
+        username_field.send_keys('user')
+
+        # 14. User fills in Password field
+        password_field = self.browser.find_element_by_id('id_password')
+        password_field.send_keys('m3@nt!m3')
+
+        # 15. User presses Sign In button
+        self.browser.find_element_by_xpath('/html/body/div/div/div[2]/form/button').click()
+
+        # 16. User logs out
+        self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
