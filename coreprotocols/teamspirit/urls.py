@@ -8,5 +8,4 @@ urlpatterns = [
     url(r'dashboard/$', views.dashboard, name='dashboard'),
     url(r'team/member/add/(?P<pk>.+)$', views.member_add, name='member_add'),
     url(r'team/session/add/(?P<pk>.+)$', views.session_add, name='session_add'),
-
 ]
