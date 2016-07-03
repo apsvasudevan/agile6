@@ -7,6 +7,12 @@ body {
   color: #5a5a5a;
 }
 
+.parsley-required, .bs-callout-warning, .parsley-mincheck{
+
+  color: red;
+
+}  
+
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
