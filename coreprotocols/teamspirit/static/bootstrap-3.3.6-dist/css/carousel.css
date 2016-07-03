@@ -28,6 +28,9 @@ body {
    /*bring your own prefixes */
   transform: translate(-50%, -50%);
 } 
+.page-form {
+  margin-top: 70px;
+}
 
 
 /* CUSTOMIZE THE NAVBAR
