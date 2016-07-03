@@ -8,7 +8,7 @@ class Test05UserGeneral(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+        self.browser.implicitly_wait(4)
 
     # def tearDown(self):
     #     self.browser.quit()
@@ -22,7 +22,7 @@ class Test05UserGeneral(LiveServerTestCase):
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
         # 3. User presses Sign Up button
-        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/div/div/p[2]/a[1]').click()
+        self.browser.find_element_by_xpath('/html/body/div[1]/div/div/div/div/p[2]/a[1]').click()
 
         # 4. User confirms they are on the sign up page
         result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
@@ -48,28 +48,31 @@ class Test05UserGeneral(LiveServerTestCase):
         last_name_field = self.browser.find_element_by_name('last_name')
         last_name_field.send_keys('One')
 
-        # 9. User clicks on sign up button
+        # 10. User checks box to accept Core Protocols
+        self.browser.find_element_by_id('protocol1').click()
+
+        # 11. User clicks on sign up button
         self.browser.find_element_by_xpath('/html/body/div/div/div/div/form/input[2]').click()
 
-        # 10. User find themselves on the correct page
+        # 12. User find themselves on the correct page
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
-        # 11. User logs out
-        self.browser.find_element_by_xpath('//html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
+        # 13. User logs out
+        self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
 
-        # 12. User Presses Sign In button
+        # 14. User Presses Sign In button
         self.browser.find_element_by_xpath('/html/body/div[2]/div/div/div/div/p[2]/a[2]').click()
 
-        # 13. User fills in Username field
+        # 15. User fills in Username field
         username_field = self.browser.find_element_by_id('id_username')
         username_field.send_keys('user')
 
-        # 14. User fills in Password field
+        # 16. User fills in Password field
         password_field = self.browser.find_element_by_id('id_password')
         password_field.send_keys('m3@nt!m3')
 
-        # 15. User presses Sign In button
+        # 17. User presses Sign In button
         self.browser.find_element_by_xpath('/html/body/div/div/div[2]/form/button').click()
 
-        # 16. User logs out
+        # 18. User logs out
         self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
