@@ -11,7 +11,26 @@ body {
 
   color: red;
 
-}  
+} 
+
+.centered {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+   /*bring your own prefixes */
+  transform: translate(-50%, -50%);
+} 
+.centered-logo {
+  position: relative;
+  margin-top: 70px;
+  top: 25%;
+  left: 50%;
+   /*bring your own prefixes */
+  transform: translate(-50%, -50%);
+} 
+.page-form {
+  margin-top: 70px;
+}
 
 
 /* CUSTOMIZE THE NAVBAR

@@ -64,13 +64,30 @@
         <div class="col-md-7">
           <h2 class="featurette-heading"><span class="text-muted">Hi there, {{ request.user.username }}</span></h2>
           <p class="lead">
+
           	<p>
             Teams I Own:
             <ul class="teamList">
             {% for t in context.teams_i_own %}
-                <li>{{ t.name }} <a href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;<a href="{% url 'session_add' t.id %}">[add session]</a></li>
+                <b>{{ t.name }}</b><a href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;<a href="{% url 'session_add' t.id %}">[add session]</a></li>
+                <li>Members</li>
+                <ul>
+                {% for m in t.members.all %}
+                <li>{{ m.first_name }} {{ m.last_name }}</li>
+                {% endfor %}
+                </ul>
+                <li>Sessions</li>
+                  <ul>
+                  {% for s in t.session_team.all %}
+                    <li>{{ s.start_time }} - {{ s.name }} :: <button class="btn btn-primary" type="submit">Close Session</button></li>
+                  {% endfor %}
+                  </ul>
             {% endfor %}
             </ul>
+
+
+
+
 
             Teams I am a Member Of:
             <ul class="teamList">
@@ -79,7 +96,7 @@
             {% endfor %}
             </ul>
 
-</p>
+            </p>
 
           </p>
         </div>
