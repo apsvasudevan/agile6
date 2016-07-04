@@ -10,8 +10,8 @@ class Test05UserGeneral(LiveServerTestCase):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(4)
 
-    # def tearDown(self):
-    #     self.browser.quit()
+    def tearDown(self):
+        self.browser.quit()
 
     def test_user_pages_login(self):
 
@@ -52,7 +52,7 @@ class Test05UserGeneral(LiveServerTestCase):
         self.browser.find_element_by_id('protocol1').click()
 
         # 11. User clicks on Submit button
-        self.browser.find_element_by_xpath('//html/body/div/div/div/div/form/div[6]/input').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/div/div/form/input[2]').click()
 
         # 12. User find themselves on the correct page
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
