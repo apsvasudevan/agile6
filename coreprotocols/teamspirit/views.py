@@ -103,6 +103,7 @@ def session_add(request, pk):
     if request.method == 'POST': # If the form has been submitted...
         data = request.POST.copy()
         data['team'] = team.id
+        data['is_open'] = True
         form = SessionForm(data) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             form.save()
