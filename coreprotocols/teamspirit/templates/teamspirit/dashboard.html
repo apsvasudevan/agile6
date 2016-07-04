@@ -28,9 +28,9 @@
                       <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Check Out"><button class="btn btn-info" type="submit">Check Out</button></a>
                       <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Pass"><button class="btn btn-warn" type="submit">Pass</button></a>
                       <a href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
-                      {% else %}
-                      <button class="btn btn-danger" type="submit">Stats!</button>
                       {% endif %}
+                                             <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
+
                     </li>
                   {% endfor %}
                   </ul>
@@ -51,16 +51,15 @@
                   <ul>
                   {% for s in t.session_team.all %}
                     <li>{{ s.start_time }} - {{ s.name }}
-                    {% if s.is_open %}
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a>
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Check Out"><button class="btn btn-info" type="submit">Check Out</button></a>
-                      <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Pass"><button class="btn btn-warn" type="submit">Pass</button></a>
-                      {% else %}
-                      <button class="btn btn-danger" type="submit">Stats!</button>
+                        {% if s.is_open %}
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a>
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Check Out"><button class="btn btn-info" type="submit">Check Out</button></a>
+                          <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Pass"><button class="btn btn-warn" type="submit">Pass</button></a>
                       {% endif %}
+                        <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
                     </li>
                   {% endfor %}
                   </ul>

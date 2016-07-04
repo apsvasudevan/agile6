@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'team/session/close/', views.session_close, name='session_close'),
     url(r'team/session/add/(?P<pk>.+)$', views.session_add, name='session_add'),
     url(r'team/session/emotion/record', views.session_emotion_record, name='session_emotion_record'),
+    url(r'team/session/stats/(?P<pk>.+)$', views.session_stats, name='session_stats'),
 
 ]
