@@ -1,16 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from teamspirit.forms import TeamForm, SignUpForm, SessionForm
-from teamspirit.models import Team
+from teamspirit.models import Team, Session
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.db.models import Q
+from django.http import HttpResponse
 
 def landing_page(request):
     context = {}
     context['teams'] = Team.objects.all().order_by('name')
     return render(request, 'teamspirit/landing.html', { "context" : context })
 
+def session_close(request):
+    session_id = request.GET["session_id"]
+    session = Session.objects.get(id=session_id)
+    session.is_open = False
+    session.save()
+    return HttpResponse('session closed')
 
 @login_required
 def dashboard(request):
