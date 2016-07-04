@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from teamspirit.forms import TeamForm, SignUpForm, SessionForm
-from teamspirit.models import Team, Session
+from teamspirit.models import Team, Session, SessionState
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.db.models import Q
@@ -114,3 +114,18 @@ def session_add(request, pk):
         form = SessionForm() # An unbound form
 
     return render(request, 'teamspirit/session_create.html', { "form" : form, 'context':context })
+
+@login_required
+def session_emotion_record(request):
+    session_id = request.GET["session_id"]
+    session = Session.objects.get(id=session_id)
+    sessionstate = SessionState()
+    sessionstate.session = session
+    sessionstate.user = request.user
+    emotion = request.GET["emotion"]
+    if (emotion == 'Sad' or emotion == 'Glad' or emotion == 'Mad' or emotion == 'Afraid'):
+        sessionstate.state = 'Check In - ' + emotion
+    else:
+        sessionstate.state = emotion
+    sessionstate.save()
+    return HttpResponse('emotion recorded')
