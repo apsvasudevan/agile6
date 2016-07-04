@@ -3,10 +3,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 STATE_CHOICES = (
-                ('Sad', 'Sad'),
-                ('Mad', 'Mad'),
-                ('Glad', 'Glad'),
-                ('Afraid', 'Afraid'),
+                ('Check In - Sad', 'Check In - Sad'),
+                ('Check In - Mad', 'Check In - Mad'),
+                ('Check In - Glad', 'Check In - Glad'),
+                ('Check In - Afraid', 'Check In - Afraid'),
                 ('Check Out', 'Check Out'),
                 ('Pass', 'Pass'),
                )
@@ -34,7 +34,8 @@ class SessionState(models.Model):
     user                    = models.ForeignKey(User, related_name="session_state_user")
     session                 = models.ForeignKey(Session, related_name="session_state_session")
     state                   = models.CharField(max_length=100, choices=STATE_CHOICES)
-    session_state_timestamp = models.DateTimeField(auto_now_add=True)
+    comments                = models.TextField(null=True, blank=True)
+    timestamp               = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):   
         return "{}".format(self.session.name)
