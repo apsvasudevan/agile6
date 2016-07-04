@@ -45,10 +45,10 @@ class Test04UserAddRemoveSession(LiveServerTestCase):
         # inputbox.send_keys('Test Team')
         # self.browser.find_element_by_xpath('/html/body/div/div[3]/div/form/div/div/input[1]').click()
         # self.browser.get(self.live_server_url + '/admin/')
-#
-#     def tearDown(self):
-#         self.browser.quit()
-#
+
+    def tearDown(self):
+        self.browser.quit()
+
     def test_user_add_remove_session(self):
 
         # 1. User goes to main page
@@ -69,10 +69,11 @@ class Test04UserAddRemoveSession(LiveServerTestCase):
         self.browser.find_element_by_xpath('/html/body/div/div/div[2]/form/button').click()
 
         # 1. User clicks to add a new session
-        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/ul[1]/a[2]').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/ul[1]/a[2]').click()
 
         # 2. User sees the session page
-        self.assertIn('Add Session To Team', self.browser.title)
+        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
+        self.assertIn('Create session for Team: Test Team', result.text)
 
         # 4. User enters "Test Session" as the session name
         inputbox = self.browser.find_element_by_id('id_name')
@@ -82,11 +83,15 @@ class Test04UserAddRemoveSession(LiveServerTestCase):
         self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[2]').click()
 
         # 6. User checks to make sure "Test Session" was create successfully
-        result = self.browser.find_element_by_xpath('/html/body/div[2]/div/div/ul[1]/ul[2]/li')
+        result = self.browser.find_element_by_xpath('/html/body/div/div/ul[1]/ul[2]/li[1]')
         self.assertIn('Test Session', result.text)
 
         # 7. User closes session
-        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/ul[1]/ul[2]/li/button').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/ul[1]/ul[2]/li/a/button').click()
+
+        # 8. User verifies session is closed
+        result = self.browser.find_element_by_xpath('/html/body')
+        self.assertIn('session closed', result.text)
         
 #         # 7. User navigates to main /User page
 #         self.browser.get(self.live_server_url + '/admin/')

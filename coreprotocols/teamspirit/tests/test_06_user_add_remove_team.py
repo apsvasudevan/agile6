@@ -51,10 +51,10 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
         inputbox.send_keys('Test Team')
 
         # 9. User hits Submit to create team
-        self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[2]').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[3]').click()
 
         # 10. User gets page to add team members
-        result = self.browser.find_element_by_xpath('/html/body/div/h3')
+        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
         self.assertIn('Add Members To Team: Test Team', result.text)
 
         # 11. User selects brian and truman as team members
@@ -66,20 +66,20 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
                 option.click()
 
         # 12. User presses Submit button
-        self.browser.find_element_by_xpath('/html/body/div/form/input[2]').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[2]').click()
 
         # 13. User presses Cancel
-        self.browser.find_element_by_xpath('/html/body/div/a/button').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/div/form/a/button').click()
 
         # 14. User checks to see if Team is listed as one they own
-        result = self.browser.find_element_by_xpath('/html/body/div[2]/div/div/ul[1]/li')
+        result = self.browser.find_element_by_xpath('/html/body/div/div/ul[1]/b[1]')
         self.assertIn('Test Team', result.text)
 
         # 15. User selects to modify teams
-        self.browser.find_element_by_xpath('/html/body/div[2]/div/div/ul[1]/li/a[1]').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/ul[1]/a[1]').click()
 
         # 16. User verifies he is on the change team page
-        result = self.browser.find_element_by_xpath('/html/body/div/h3')
+        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
         self.assertIn('Add Members To Team: Test Team', result.text)
 
         # 17. User de-selects brian to remove him from the team
@@ -89,4 +89,4 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
                 option.click()
 
         # 18. User presses Cancel button to cancel out of creating a session
-        self.browser.find_element_by_xpath('/html/body/div/a/button').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/div/form/a/button').click()
