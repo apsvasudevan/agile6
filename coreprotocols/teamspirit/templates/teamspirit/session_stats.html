@@ -7,7 +7,7 @@
             Session Stats:
             <ul class="teamList">
             {% for ss in context.session_states %}
-              <li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }}</li>
+              <li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>
             {% endfor %}
             </ul>
 
