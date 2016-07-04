@@ -1,67 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+{% extends "teamspirit/base.html" %}
 
-  	<title>Team&#x2605;Spirit</title>
+{% block content %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-
-    <!-- Bootstrap core CSS -->
-    {% load staticfiles %}
-  <link href="{% static 'bootstrap-3.3.6-dist/css/bootstrap.min.css' %}" rel="stylesheet">
-
-
-	<link rel="icon" href="{% static 'assets/favicon.ico' %}">
-	<link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
-  <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">  
-  </head>
-<!-- NAVBAR
-================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Team&#x2605;Spirit</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="{% url 'team_create' %}">Create Team</a></li>
-                <li><a href="/logout/">Sign Out</a></li>
-                
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
-      <!-- START THE FEATURETTES -->
-      <div class="row featurette">
-
-
-        <div class="col-md-7">
           <h2 class="featurette-heading"><span class="text-muted">Hi there, {{ request.user.username }}</span></h2>
           <p class="lead">
 
@@ -99,43 +39,5 @@
             </p>
 
           </p>
-        </div>
-      </div>
 
-      <hr class="featurette-divider">
-
-
-
-
-
-
-
-
-
-
-      <!-- /END THE FEATURETTES -->
-
-
-      <!-- FOOTER -->
-      <footer>
-        <p>&copy; 2016 Team&#x2605;Spirit</p>
-      </footer>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>')</script>
-    {% load staticfiles %}
-	<script src="{% static 'js/carousel.js' %}"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="{% static 'assets/js/vendor/holder.min.js' %}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-  </body>
-</html>
-
-</html>
+{% endblock %}
