@@ -129,3 +129,10 @@ def session_emotion_record(request):
         sessionstate.state = emotion
     sessionstate.save()
     return HttpResponse('emotion recorded')
+
+@login_required
+def session_stats(request, pk):
+    session = Session.objects.get(id=pk)
+    context = {}
+    context['session_states'] = SessionState.objects.filter(session=session)
+    return render(request, 'teamspirit/session_stats.html', { "context" : context })

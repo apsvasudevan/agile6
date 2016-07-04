@@ -1,0 +1,18 @@
+{% extends "teamspirit/base.html" %}
+
+{% block content %}
+
+          <h2 class="featurette-heading"><span class="text-muted">Hi there, {{ request.user.username }}</span></h2>
+          <p class="lead">
+            Session Stats:
+            <ul class="teamList">
+            {% for ss in context.session_states %}
+              <li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }}</li>
+            {% endfor %}
+            </ul>
+
+            </p>
+
+          </p>
+
+{% endblock %}
