@@ -21,8 +21,7 @@
                   {% for s in t.session_team.all %}
                     <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}<br><br>
                     {% if s.is_open %} 
-                      
-                      
+
 
                     <div style="width: 800px;">
                         <div class="protocol-panel" style="float: left; width: 400px;">
@@ -47,6 +46,10 @@
                       <a href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
                       {% endif %}
                                              <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
+
+
+<button type="button" class="btn btn btn-danger" data-toggle="popover" title="Stats" data-content="And here's some amazing content. It's very engaging. Right?">put stats data in this popover</button>
+
 
                     </li>
                   {% endfor %}
@@ -84,4 +87,5 @@
             </ul>
             </p>
           </p>
+
 {% endblock %}
