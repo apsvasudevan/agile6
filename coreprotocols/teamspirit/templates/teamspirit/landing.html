@@ -46,16 +46,13 @@
             <img class="first-slide"
                  src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
                  alt="First slide">
-
             <div class="container">
 
                 <div class="carousel-caption">
 
-                    <img class='centered' src="{% static 'assets/team-spirit-beach.png' %}" style="padding-top: 20px; top:18%">
+                    <img class='centered' src="{% static 'assets/team-spirit-beach.png' %}"
+                         style="padding-top: 20px; top:18%">
                     <h1>Every remote agile team living in greatness.</h1>
-                    
-                    <p>TeamSpirit is an applicaiton used by agile teams implementing the Check In, Check Out and Passer
-                        Core Protocols from remote locations.</p>
                     <p>
                         <a class="btn btn-primary btn-block btn-lg" href="/login/" role="button">Sign In</a>
                         <a href="{% url 'sign_up' %}" class="btn btn-primary btn-sm" role="button">Sign Up</a>
@@ -83,13 +80,17 @@
 
 <div class="container marketing">
     <!-- Three columns of text below the carousel -->
+
+                    <h3><strong>TeamSpirit is an applicaiton used by agile teams implementing the CheckIn, CheckOut and Pass
+                        Protocols from remote locations.</strong></h3>
     <div class="row">
 
         <div class="col-lg-4">
             <i class="fa fa-sign-in fa-5x" style="color: #337ab7"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
             <h2>Check In</h2>
-            <p>Behavior characterized by high levels of engagement, substantial presence, disclosure of self, and receptivity to others.</p>
+            <p>Behavior characterized by high levels of engagement, substantial presence, disclosure of self, and
+                receptivity to others.</p>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -167,6 +168,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
     window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>')
+
 </script>
 {% load staticfiles %}
 <script src="{% static 'js/carousel.js' %}"></script>
