@@ -5,3 +5,20 @@ ul.teamList {
 .session li {
 	padding-bottom: 20px;
 }
+
+.dashboard-label {
+	padding: 20px 0px 0px 0px;
+}
+
+.dashboard-li label, .dashboard-li a {
+	padding-left:10px;
+}
+
+h4 {
+
+	color: #337ab7;
+}
+
+.protocol-panel {
+	margin-right: 3px;
+}
