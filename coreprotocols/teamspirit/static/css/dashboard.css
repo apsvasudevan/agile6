@@ -1,3 +1,7 @@
 ul.teamList {
 	list-style-type: none;
 }
+
+.session li {
+	padding-bottom: 20px;
+}

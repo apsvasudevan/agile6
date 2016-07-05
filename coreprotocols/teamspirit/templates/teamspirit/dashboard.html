@@ -17,7 +17,7 @@
                 {% endfor %}
                 </ul>
                 <li>Sessions</li>
-                  <ul>
+                  <ul class="session">
                   {% for s in t.session_team.all %}
                     <li>{{ s.start_time }} - {{ s.name }}
                     {% if s.is_open %} 
