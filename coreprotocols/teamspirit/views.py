@@ -118,12 +118,17 @@ def session_add(request, pk):
 @login_required
 def session_emotion_record(request):
     session_id = request.GET["session_id"]
-    comments = request.GET["comments"]
     session = Session.objects.get(id=session_id)
     sessionstate = SessionState()
     sessionstate.session = session
     sessionstate.user = request.user
-    sessionstate.comments = comments
+
+    try:
+        comments = request.GET["comments"]
+        sessionstate.comments = comments
+    except:
+        pass
+        
     emotion = request.GET["emotion"]
     if (emotion == 'Sad' or emotion == 'Glad' or emotion == 'Mad' or emotion == 'Afraid'):
         sessionstate.state = 'Check In - ' + emotion
