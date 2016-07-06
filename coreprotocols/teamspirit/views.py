@@ -24,7 +24,7 @@ def dashboard(request):
     context = {}
     context['teams_i_own'] = Team.objects.filter(owner=request.user).order_by('name')
     context['teams_i_am_member_of'] = Team.objects.filter(members=request.user).exclude(owner=request.user).order_by('name')
-
+    context['session_states'] = SessionState.objects.all()
     return render(request, 'teamspirit/dashboard.html', { "context" : context })
 
 def sign_up(request):

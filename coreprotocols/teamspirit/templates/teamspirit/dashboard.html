@@ -1,7 +1,7 @@
 {% extends "teamspirit/base.html" %}
 
 {% block content %}
-
+{% load app_filters %}
 <style>
 .alert-message {
     width:200px;
@@ -112,8 +112,13 @@
 
                     <a href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
                     {% endif %}
-                    <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
-                    <button type="button" class="btn btn btn-danger" data-toggle="popover" title="Stats" data-content="And here's some amazing content. It's very engaging. Right?">put stats data in this popover</button>
+                    <button type="button" class="btn btn btn-danger"
+                            data-html="true"
+                            data-toggle="popover"
+                            data-container="body"
+                            data-original-title=""
+                            title="Session Stats"
+                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
                 </li>
                 {% endfor %}
                 <li><a href="{% url 'session_add' t.id %}">[add session]</a></li>
@@ -142,7 +147,12 @@
                     <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                     <button data-session-id={{s.id}} class="btn btn-warn pass-button" type="submit">Pass</button>
                     {% endif %}
-                    <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
+                    <button type="button" class="btn btn btn-danger"
+                            data-html="true"
+                            data-toggle="popover"
+                            data-original-title=""
+                            title="Session Stats"
+                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
                 </li>
                 {% endfor %}
             </ul>
@@ -206,8 +216,12 @@
 
                 <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Close Session</button>
                 {% endif %}
-                <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
-                <button type="button" class="btn btn btn-danger" data-toggle="popover" title="Stats" data-content="And here's some amazing content. It's very engaging. Right?">put stats data in this popover</button>
+                <button type="button" class="btn btn btn-danger"
+                        data-html="true"
+                        data-toggle="popover"
+                        data-original-title=""
+                        title="Session Stats"
+                        data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
             </li>
             {% endfor %}
             <li><a href="{% url 'session_add' t.id %}">[add session]</a></li>
@@ -235,7 +249,12 @@
                 <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                 <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                 {% endif %}
-                <a href="{% url 'session_stats' s.id %}"><button class="btn btn-danger" type="submit">Stats!</button></a>
+                <button type="button" class="btn btn btn-danger"
+                        data-html="true"
+                        data-toggle="popover"
+                        data-original-title=""
+                        title="Session Stats"
+                        data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
             </li>
             {% endfor %}
         </ul>
@@ -282,6 +301,18 @@
         $.get( "/team/session/emotion/record/?session_id=" + session_id + "&emotion=Pass", function( data ) {
             $('.pass').fadeIn(400).delay(1000).fadeOut(400);             
         });
-    });    
+    });
+
+    $('[data-toggle="popover"]').popover();
+
+        $('body').on('click', function (e) {
+            $('[data-toggle="popover"]').each(function () {
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                } else {
+                    $(this).popover("toggle");
+                }
+            });
+        });
 
 {% endblock %}
