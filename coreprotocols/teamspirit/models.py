@@ -43,3 +43,5 @@ class SessionState(models.Model):
     # def __str__(self):   
        #  return "{}-{}-{}".format(self.tank_number, self.rack, self.box)
 
+class MOTD(models.Model):
+    message = models.TextField()
