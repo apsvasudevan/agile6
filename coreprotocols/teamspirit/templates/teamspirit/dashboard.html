@@ -33,22 +33,22 @@ h3 {
 <h3>{{context.motd.message }}</h3>
 
 <ul class="nav nav-tabs">
-    <li class="active"><a  data-toggle="tab" href="#all">All Teams</a></li>
+    <li class="active" id="id_allteams"><a  data-toggle="tab" href="#all">All Teams</a></li>
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Teams I Own
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id_ownedteams">Teams I Own
             <span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" id="id_ownedteam_list">
             {% for t in context.teams_i_own %}
-            <li><a data-toggle="tab" href="#own{{ t.id }}">{{ t.name }}</a></li>
+            <li><a id="id_ownedteam_name" data-toggle="tab" href="#own{{ t.id }}">{{ t.name }}</a></li>
             {% endfor %}
         </ul>
     </li>
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Teams I Am A Member Of
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id_member">Teams I Am A Member Of
             <span class="caret"></span></a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" id="id_member_list">
             {% for t in context.teams_i_am_member_of %}
-            <li><a data-toggle="tab" href="#mem{{ t.id }}">{{ t.name }}</a></li>
+            <li><a id="id_member_teamname" data-toggle="tab" href="#mem{{ t.id }}">{{ t.name }}</a></li>
             {% endfor %}
         </ul>
     </li>
@@ -63,7 +63,7 @@ h3 {
                 {% for m in t.members.all %}
                 <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
                 {% endfor %}
-                <li><a href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;</li>
+                <li><a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;</li>
             </ul>
             <li><h4>Sessions</h4></li>
             <ul class="session">
@@ -84,10 +84,10 @@ h3 {
 
                             <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> 
                                 <div class="panel-body"> 
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                    <button id="id_allteams_sad" data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button id="id_allteams_glad" data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button id="id_allteams_mad" data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button id="id_allteams_afraid" data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
                                 </div> 
                             </div>
                         </div>
@@ -98,7 +98,7 @@ h3 {
                                     <h3 class="panel-title">Check Out Protocol</h3> 
                                 </div> 
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                    <button id="id_allteams_checkout" data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                                 </div> 
                             </div>
                         </div>
@@ -109,7 +109,7 @@ h3 {
                                     <h3 class="panel-title">Passer Protocol</h3> 
                                 </div> 
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                    <button id="id_allteams_pass" data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                                 </div> 
                             </div>
                         </div>
@@ -117,9 +117,10 @@ h3 {
                         <br style="clear: left;" />
                     </div>
 
-                    <a href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
+                    <a id="id_close_session" href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
                     {% endif %}
-                    <button type="button" class="btn btn btn-danger"
+                    <button id="id_allteams_stats"
+                            type="button" class="btn btn btn-danger"
                             data-html="true"
                             data-toggle="popover"
                             data-container="body"
@@ -147,14 +148,14 @@ h3 {
                 <li>{{ s.start_time }} - {{ s.name }}
                     {% if s.is_open %}
 
-                    <button data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Sad</button>
-                    <button data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Glad</button>
-                    <button data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Mad</button>
-                    <button data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
-                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
-                    <button data-session-id={{s.id}} class="btn btn-warn pass-button" type="submit">Pass</button>
+                    <button id="id_ownedteams_sad" data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Sad</button>
+                    <button id="id_ownedteamns_glad" data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Glad</button>
+                    <button id="id_ownedteams_mad" data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Mad</button>
+                    <button id="id_ownedteams_afraid" data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments2" class="btn btn-success emotion-button" type="submit">Afraid</button><br>
+                    <button id="id_ownedteams_checkout" data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                    <button id="id_ownedteams_pass" data-session-id={{s.id}} class="btn btn-warn pass-button" type="submit">Pass</button>
                     {% endif %}
-                    <button type="button" class="btn btn btn-danger"
+                    <button id="id_ownedteams_stats" type="button" class="btn btn btn-danger"
                             data-html="true"
                             data-toggle="popover"
                             data-original-title=""
@@ -188,10 +189,10 @@ h3 {
 
                         <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> 
                                 <div class="panel-body"> 
-                                    <button data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Sad</button>
-                                    <button data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Glad</button>
-                                    <button data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Mad</button>
-                                    <button data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
+                                    <button id="id_member_sad" data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button id="id_member_glad" data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button id="id_member_mad" data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button id="id_member_afraid" data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments3" class="btn btn-success emotion-button" type="submit">Afraid</button><br>
                                 </div>  
                             </div>
                     </div>
@@ -202,7 +203,7 @@ h3 {
                                 <h3 class="panel-title">Check Out Protocol</h3> 
                             </div> 
                             <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                <button id="id_member_checkout" data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                             </div> 
                         </div>
                     </div>
@@ -213,7 +214,7 @@ h3 {
                                 <h3 class="panel-title">Passer Protocol</h3> 
                             </div> 
                             <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                <button id="id_member_pass" data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                             </div> 
                         </div>
                     </div>
@@ -223,7 +224,8 @@ h3 {
 
                 <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Close Session</button>
                 {% endif %}
-                <button type="button" class="btn btn btn-danger"
+                <button id="id_member_stats"
+                        type="button" class="btn btn btn-danger"
                         data-html="true"
                         data-toggle="popover"
                         data-original-title=""
@@ -249,14 +251,15 @@ h3 {
             {% for s in t.session_team.all %}
             <li>{{ s.start_time }} - {{ s.name }}
                 {% if s.is_open %}
-                <button data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Sad</button>
-                <button data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Glad</button>
-                <button data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Mad</button>
-                <button data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
-                <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
-                <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                <button id="id_sad2" data-session-id={{s.id}} data-emotion="Sad"    data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Sad</button>
+                <button id="id_glad2" data-session-id={{s.id}} data-emotion="Glad"   data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Glad</button>
+                <button id="id_mad2" data-session-id={{s.id}} data-emotion="Mad"    data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Mad</button>
+                <button id="id_afraid2" data-session-id={{s.id}} data-emotion="Afraid" data-comments-id="check-in-comments4" class="btn btn-success emotion-button" type="submit">Afraid</button><br>
+                <button id="id_checkout2" data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                <button id="id_pass2" data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                 {% endif %}
-                <button type="button" class="btn btn btn-danger"
+                <button id="id_stats2"
+                        type="button" class="btn btn btn-danger"
                         data-html="true"
                         data-toggle="popover"
                         data-original-title=""
