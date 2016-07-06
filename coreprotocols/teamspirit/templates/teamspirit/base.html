@@ -89,9 +89,9 @@
       $(function() {
         $("#id_members").chosen({width: "50%"});
       });
-    </script>
 
-    <script>
+      {% block jquery %}{% endblock %}
+
       $('[data-toggle="popover"]').popover();   
     </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

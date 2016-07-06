@@ -2,6 +2,29 @@
 
 {% block content %}
 
+<style>
+.welcome {
+    width:200px;
+    height:20px;
+    height:auto;
+    position:absolute;
+    left:50%;
+    margin-left:-100px;
+    bottom:10px;
+    background-color: #383838;
+    color: #F0F0F0;
+    font-family: Calibri;
+    font-size: 20px;
+    padding:10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    display: none;
+}
+</style>
+
 <h1 class="featurette-heading" style="margin-top: 40px;"><span class="text-muted">Hi there, {{ request.user.username }}</span></h1>
 <ul class="nav nav-tabs">
     <li class="active"><a  data-toggle="tab" href="#all">All Teams</a></li>
@@ -40,17 +63,27 @@
             <ul class="session">
                 {% for s in t.session_team.all %}
                 <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}<br><br>
+                <!--
+                    {% for x in s.session_state_session.all %}
+                    user: {{ x.user.username }}<br/>
+                    state: {{ x.state}}<br/>
+                    time: {{ x.timestamp}}<br/>
+                    <br/>
+                    {% endfor %}
+                -->
                     {% if s.is_open %}
-
-
 
                     <div style="width: 800px;">
                         <div class="protocol-panel" style="float: left; width: 400px;">
 
-                            <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> <div class="panel-body"> <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
-                                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
-                                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
-                                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a><br> </div> </div>
+                            <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> 
+                                <div class="panel-body"> 
+                                    <button data-session-id={{s.id}} data-emotion="Sad"    class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
+                                </div> 
+                            </div>
                         </div>
 
                         <div style="float: left; width: 195px;">
@@ -88,10 +121,12 @@
                 {% for s in t.session_team.all %}
                 <li>{{ s.start_time }} - {{ s.name }}
                     {% if s.is_open %}
-                    <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
-                    <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
-                    <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
-                    <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a>
+
+                    <button data-session-id={{s.id}} data-emotion="Sad"    class="btn btn-success emotion-button" type="submit">Sad</button>
+                    <button data-session-id={{s.id}} data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                    <button data-session-id={{s.id}} data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                    <button data-session-id={{s.id}} data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
+
                     <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Check Out"><button class="btn btn-info" type="submit">Check Out</button></a>
                     <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Pass"><button class="btn btn-warn" type="submit">Pass</button></a>
                     {% endif %}
@@ -123,10 +158,14 @@
                 <div style="width: 800px;">
                     <div class="protocol-panel" style="float: left; width: 400px;">
 
-                        <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> <div class="panel-body"> <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
-                            <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
-                            <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
-                            <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a><br> </div> </div>
+                        <div class=" protocol-panel panel panel-success" style="max-width: 395px"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div> 
+                                <div class="panel-body"> 
+                                    <button data-session-id={{s.id}} data-emotion="Sad"    class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button data-session-id={{s.id}} data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
+                                </div>  
+                            </div>
                     </div>
 
                     <div style="float: left; width: 195px;">
@@ -164,10 +203,11 @@
             {% for s in t.session_team.all %}
             <li>{{ s.start_time }} - {{ s.name }}
                 {% if s.is_open %}
-                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Sad"><button class="btn btn-success" type="submit">Sad</button></a>
-                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Glad"><button class="btn btn-success" type="submit">Glad</button></a>
-                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Mad"><button class="btn btn-success" type="submit">Mad</button></a>
-                <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Afraid"><button class="btn btn-success" type="submit">Afraid</button></a>
+                <button data-session-id={{s.id}} data-emotion="Sad"    class="btn btn-success emotion-button" type="submit">Sad</button>
+                <button data-session-id={{s.id}} data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                <button data-session-id={{s.id}} data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                <button data-session-id={{s.id}} data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button><br> 
+
                 <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Check Out"><button class="btn btn-info" type="submit">Check Out</button></a>
                 <a href="/team/session/emotion/record/?session_id={{s.id}}&emotion=Pass"><button class="btn btn-warn" type="submit">Pass</button></a>
                 {% endif %}
@@ -178,4 +218,19 @@
     </div>
     {% endfor %}
 </div>
+<div class="welcome">
+Welcome {{ request.user.first_name }}
+</div>
+
+{% endblock %}
+
+{% block jquery%}
+
+    $( ".emotion-button" ).click(function() {
+        session_id = $(this).attr("data-session-id") 
+        emotion = $(this).attr("data-emotion") 
+        $.get( "/team/session/emotion/record/?session_id=" + session_id + "&emotion=" + emotion, function( data ) {
+            $('.welcome').fadeIn(400).delay(1000).fadeOut(400); 
+        });
+    });
 {% endblock %}
