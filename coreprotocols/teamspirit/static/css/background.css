@@ -27,7 +27,11 @@ text-shadow: 4px 4px 4px #000;
 .t2 {
 font-family: 'Caveat', cursive;
 font-size: 28px;
+}
 
+.signup{
+font-family: 'Titillium Web', sans-serif;
+font-color: 'white';
 }
 
 .wrapper {
