@@ -25,6 +25,8 @@
     <link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
     <link href="{% static 'css/background.css' %}" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Buenard:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
+
 </head>
 <!-- NAVBAR
 Moving Background Images
@@ -41,18 +43,17 @@ Moving Background Images
 ================================================== -->
 <body>
 <video autoplay loop muted poster="assets/" id="background">
-    <source src="http://cdn.calm.com/scenes/scene-UGH2oUBMyM.mp4?v=1417688537593" type="video/mp4">
+    <source src="{% static 'assets/pouringRain.mp4' %}" type="video/mp4">
 </video>
-
 <div class="container">
-        <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">
-    <!-- Trigger the modal with a button -->
-    <div class="h2" style="color: blue"><strong>Every remote agile team living in greatness</strong></div>
-    <p>
+    <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">
+    <div class="label" style="color: white; opacity: 1;">
+    <div class="h2" ><strong>Every remote agile team living in greatness</strong></div>
+        </div>
+    <div class="label">
         <a class="btn btn-primary btn-lg" href="/login/" role="button">Sign In</a>
-        <a href="{% url 'sign_up' %}" class="btn btn-link btn-sm" role="button" style="color:blue">Sign
-            Up</a>
-    </p>
+        <a href="{% url 'sign_up' %}" class="btn btn-link btn-md" role="button" style="color:white">Sign Up</a>
+    </div>
 </div>
 
 <!-- Marketing messaging and featurettes================================================== -->
@@ -61,33 +62,33 @@ Moving Background Images
 <div class="container marketing">
     <!-- Three columns of text below the carousel -->
 
-    <div class="h3" style="color: blue" align="center"><strong>TeamSpirit is an application used by agile teams implementing the
+    <div class="h3" style="color: white" align="center"><strong>TeamSpirit is an application used by agile teams implementing the
         CheckIn, CheckOut and Pass
         Protocols from remote locations.</strong></div>
     <div class="row">
 
         <div class="col-lg-4">
-            <i class="fa fa-sign-in fa-5x" style="color: blue"></i>
+            <i class="fa fa-sign-in fa-5x" style="color: white"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-        <div class="h2" style="color: blue"><strong>CheckIn</strong></div>
-            <div class="p" style="color: blue"><strong>Behavior characterized by high levels of engagement, substantial
+        <div class="h2" style="color: white"><strong>CheckIn</strong></div>
+            <div class="p" style="color: white"><strong>Behavior characterized by high levels of engagement, substantial
                 presence, disclosure of self, and
                 receptivity to others.</strong></div>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <i class="fa fa-sign-out fa-5x" style="color: blue"></i>
+            <i class="fa fa-sign-out fa-5x" style="color: white"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-           <div class="h2" style="color: blue"><strong>CheckOut</strong></div>
-            <div class="p" style="color: blue"><strong>Absence due to awareness of low productivity or unresolved
+           <div class="h2" style="color: white"><strong>CheckOut</strong></div>
+            <div class="p" style="color: white"><strong>Absence due to awareness of low productivity or unresolved
                 conflicting commitments.</strong></div>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <i class="fa fa-user-times fa-5x" style="color: blue"></i>
+            <i class="fa fa-user-times fa-5x" style="color: white"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-            <div class="h2" style="color: blue"><strong>Pass</strong></div>
-            <div class="p" style="color: blue"><strong>To expliciity choose to forgo something.</strong></div>
+            <div class="h2" style="color: white"><strong>Pass</strong></div>
+            <div class="p" style="color: white"><strong>To expliciity choose to forgo something.</strong></div>
 
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -138,7 +139,7 @@ Moving Background Images
 
     <hr class="featurette-divider">
     <!-- FOOTER -->
-    <footer>
+    <footer style="color: white;">
         <p>&copy; 2016 Team Agile6&#x2605;</p>
     </footer>
 
