@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
 
     {% load staticfiles %}
-	<link href="{% static "css/signin.css" %}" rel="stylesheet">
+    <link href="{% static " css
+    /signin.css" %}" rel="stylesheet">
 
     <title>Team&#x2605;Spirit</title>
 
@@ -13,76 +14,85 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    
 
-   <!-- Bootstrap core CSS -->
-   {% load staticfiles %}
-  <link href="{% static 'bootstrap-3.3.6-dist/css/bootstrap.min.css' %}" rel="stylesheet">
-
-  <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+    <!-- Bootstrap core CSS -->
+    {% load staticfiles %}
+    <link href="{% static 'bootstrap-3.3.6-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+    <link href="{% static 'css/background.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Custom styles for this template -->
-  <link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
-  </head>
+    <link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
+</head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
+<body>
+<video autoplay loop muted poster="assets/" id="background">
+    <source src="http://cdn.calm.com/scenes/scene-nGWcJdvlQ2.mp4?v=1418162807311" type="video/mp4">
+</video>
+<div class="navbar-wrapper">
+    <div class="container">
+        <!-- <h2 align="center">Team Spirit</h2> -->
+        <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">
+        <!-- <h2 align="center"><small>Agile 6</small></h2> -->
 
-<div >
-  <!-- <h2 align="center">Team Spirit</h2> -->
-  <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}" >
-	<!-- <h2 align="center"><small>Agile 6</small></h2> -->
-</div>
-<div class="container">
+        <div class="container">
 
-	<form class="form-signin" action="" method="post">
-		{% csrf_token %}
-		<label for="inputEmail" class="sr-only">Username</label>
-		<input width="30" class="form-control" type="text" id="id_username" name="username" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required>
-		<label for="inputPassword" class="sr-only">Password</label>
-		<input class="form-control" type="password"  id="id_password" name="password" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	</form>
+            <form class="form-signin" action="" method="post">
+                {% csrf_token %}
+                <label for="inputEmail" class="sr-only">Username</label>
+                <input width="30" class="form-control" type="text" id="id_username" name="username" value="Username"
+                       onBlur="if(this.value == '') this.value = 'Username'"
+                       onFocus="if(this.value == 'Username') this.value = ''" required>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input class="form-control" type="password" id="id_password" name="password" value="Password"
+                       onBlur="if(this.value == '') this.value = 'Password'"
+                       onFocus="if(this.value == 'Password') this.value = ''" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
 
-</div>
+        </div>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
 
-     
 
     </div><!-- /.container -->
 
-     
+
     <!-- FOOTER -->
     <footer class="container">
-      <hr class="featurette-divider">
-      <p>&copy; 2016 Team&#x2605;Spirit</p>
+        <hr class="featurette-divider">
+        <p>&copy; 2016 Team&#x2605;Spirit</p>
     </footer>
-
-
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>')</script>
+    <script>
+        window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>')
+    </script>
     {% load staticfiles %}
-  <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="{% static 'assets/js/vendor/holder.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-  </body>
+</body>
 </html>
