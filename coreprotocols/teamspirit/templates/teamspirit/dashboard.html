@@ -24,11 +24,10 @@
 }
 h3 {
     padding-bottom: 20px;
-
 }
 </style>
 
-<h1 class="featurette-heading" style="margin-top: 40px;"><span class="text-muted">Hi there, {{ request.user.first_name }}</span></h1>
+<h1 class="dashboard" style="margin-top: 10px;"><span class="text-muted" style="color:white;">Hi there, {{ request.user.first_name }}!</span></h1>
 
 <h3>{{context.motd.message }}</h3>
 
