@@ -48,13 +48,17 @@ Moving Background Images
     <source src="{% static 'assets/pouringRain.mp4' %}" type="video/mp4">
 </video>
 <div class="container">
-    <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">
+    <!--<img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">-->
+    <a href="../"><img class='centered-logo' alt="TeamSpirit Logo" src="{% static 'assets/teamspirit.png' %}" width="50%"></a>
+
     <div class="label" style="color: white; opacity: 1;">
     <div class="h2" ><strong>Every remote agile team living in greatness</strong></div>
         </div>
     <div class="wrapper">
         <a class="btn btn-primary btn-lg" href="/login/" role="button" id="id_signin">Sign In</a>
-        <a href="{% url 'sign_up' %}" class="btn btn-link btn-md" id="id_signup" role="button" style="color:white">Sign Up</a>
+    </div>
+      <div class="wrapper">
+        <a href="{% url 'sign_up' %}" class="btn btn-link btn-md" id="id_signup" role="button" style="color:white">Create an Account</a>
     </div>
 </div>
 
