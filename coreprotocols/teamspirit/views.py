@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from teamspirit.forms import TeamForm, SignUpForm, SessionForm
-from teamspirit.models import Team, Session, SessionState
+from teamspirit.models import Team, Session, SessionState, MOTD
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.db.models import Q
@@ -22,6 +22,7 @@ def session_close(request):
 @login_required
 def dashboard(request):
     context = {}
+    context['motd'] = MOTD.objects.last()
     context['teams_i_own'] = Team.objects.filter(owner=request.user).order_by('name')
     context['teams_i_am_member_of'] = Team.objects.filter(members=request.user).exclude(owner=request.user).order_by('name')
 
@@ -128,7 +129,7 @@ def session_emotion_record(request):
         sessionstate.comments = comments
     except:
         pass
-        
+
     emotion = request.GET["emotion"]
     if (emotion == 'Sad' or emotion == 'Glad' or emotion == 'Mad' or emotion == 'Afraid'):
         sessionstate.state = 'Check In - ' + emotion
