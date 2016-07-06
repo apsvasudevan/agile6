@@ -18,10 +18,23 @@
     font-family: 'La Belle Aurore', cursive;
 }
 
-h2 {
-font-family: 'La Belle Aurore', cursive;
+.h2 {
+/*font-family: 'La Belle Aurore', cursive;
+font-family: 'Caveat', cursive;*/
+font-family: 'Homemade Apple', cursive;
+text-shadow: 4px 4px 4px #000;
+}
+.t2 {
+font-family: 'Caveat', cursive;
+font-size: 28px;
 
 }
-.container marketng h2 {
-font-family: 'La Belle Aurore', cursive;
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
 }
