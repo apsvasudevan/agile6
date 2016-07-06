@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css?family=Caveat|Homemade+Apple|Titillium+Web:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Homemade+Apple|Titillium+Web:300, bold" rel="stylesheet">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -40,7 +40,7 @@
 
 
 <div class="container-fluid">
-   <h3 class="col-md-12 text-center">Sign up using your email</h3>
+   <h3 class="col-md-12 text-center"><strong>Sign up using your email</strong> </h3>
   <div class="row">
     <div class="col-sm-4">
             <form data-parsley-validate="" name="" method="post" class="signin" novalidate autocomplete="on">
@@ -73,7 +73,7 @@
     <div class="col-sm-8">
 
         <div class="form-group">
-                        <label for="Agreement">Team Spirit Agreement</label>
+                        <label for="Agreement" style="text-decoration: underline;"><strong> Team Spirit Agreement </strong></label>
                         <p><strong>“Authenticity, integrity, and consistency are the highest values associated with
                             CheckIn. Increasing personal proximity is the foundation of The Core protocols and is the
                             basis for The Core’s style of teamwork."</strong></p>
@@ -118,7 +118,8 @@
                         <h4>Oh snap!</h4>
                         <p>This form seems to be invalid. Make sure you have agreed to use all CORE PROTOCOLS!</p>
                     </div>
-                    <input id="id_signup" type="submit">
+                    <input class="btn btn-primary btn-lg" id="id_signup" type="submit">
+
                 </form>
     </div>
   </div>
