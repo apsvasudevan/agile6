@@ -262,7 +262,8 @@
         session_id = $(this).attr("data-session-id");
         comment_id = $(this).attr("data-comments-id");
         emotion = $(this).attr("data-emotion");
-        comments = $( '#' + comment_id ).val()
+        comments = $( '#' + comment_id ).val();
+        $( '#' + comment_id ).val('');
         console.log('comments: ' + comments); 
         $.get( "/team/session/emotion/record/?session_id=" + session_id + "&emotion=" + emotion + "&comments=" + comments, function( data ) {
             $('.welcome').fadeIn(400).delay(1000).fadeOut(400); 
