@@ -22,7 +22,7 @@ class Test05UserGeneral(LiveServerTestCase):
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
         # 3. User presses Sign Up button
-        self.browser.find_element_by_xpath('/html/body/div[1]/div/div/div/div/p[2]/a[1]').click()
+        self.browser.find_element_by_id('id_signup').click()
 
         # 4. User confirms they are on the sign up page
         result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
@@ -58,10 +58,10 @@ class Test05UserGeneral(LiveServerTestCase):
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
         # 13. User logs out
-        self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[3]/a').click()
 
         # 14. User Presses Sign In button
-        self.browser.find_element_by_xpath('/html/body/div[1]/div/div/div/div/p[2]/a[2]').click()
+        self.browser.find_element_by_id('id_signin').click()
 
         # 15. User fills in Username field
         username_field = self.browser.find_element_by_id('id_username')
@@ -72,7 +72,7 @@ class Test05UserGeneral(LiveServerTestCase):
         password_field.send_keys('m3@nt!m3')
 
         # 17. User presses Sign In button
-        self.browser.find_element_by_xpath('/html/body/div/div/div[2]/form/button').click()
+        self.browser.find_element_by_id('id_signin').click()
 
         # 18. User logs out
-        self.browser.find_element_by_xpath('/html/body/div[1]/div/nav/div/div[2]/ul/li[3]/a').click()
+        self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[3]/a').click()
