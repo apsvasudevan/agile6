@@ -58,7 +58,7 @@
 
       <div class='page-form'>
 	        <h3>Add Members To Team: {{ context.team.name }}</h3>
-				<form action="" method="post">{% csrf_token %}
+				<form action="" method="post" style="display: inline;">{% csrf_token %}
 				{{ form.non_field_errors }}
 
 				<table class="table" >
@@ -73,11 +73,11 @@
 				</table>
 
 				<input type="submit" class="btn btn-primary" value="Submit" />
-				<a href="{% url 'dashboard' %}"><button class="btn btn-info">Cancel</button></a>
 				</form>
-				
+          <a href="{% url 'dashboard' %}"><button class="btn btn-info">Cancel</button></a>
 
-			</div>
+
+      </div>
 
     </div><!-- /.container -->
 

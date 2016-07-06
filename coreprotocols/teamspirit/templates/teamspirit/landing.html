@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>Team&#x2605;Spirit</title>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-
 
     <!-- Bootstrap core CSS -->
     {% load staticfiles %}
@@ -26,86 +23,71 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'bootstrap-3.3.6-dist/css/carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/background.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Buenard:700' rel='stylesheet' type='text/css'>
 </head>
 <!-- NAVBAR
+Moving Background Images
+  http://cdn.calm.com/scenes/scene-nEiN7iOVb3.mp4?v=1424734029666 - Clouds
+  http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.mp4?v=1418162238190 - Mountain Lake
+  http://cdn.calm.com/scenes/scene-nGWcJdvlQ2.mp4?v=1418162807311 - Rain on Leaves
+  http://cdn.calm.com/scenes/scene-HKceZ4c2nt.mp4?v=1418162711606 - Sunset Beach
+  http://cdn.calm.com/scenes/scene-WdVY0QGD4.mp4?v=1450780565679 - Planet Earth
+  http://cdn.calm.com/scenes/scene-Jcmdfl7dA7.mp4?v=1418090110509 - Foggy Stream
+  http://cdn.calm.com/scenes/scene-N0LlltMMDH.mp4?v=1417688424364 - Pouring Rain
+  http://cdn.calm.com/scenes/scene-AI2PpDVaKc.mp4?v=1417688493900 - Under Water
+  http://cdn.calm.com/scenes/scene-7EIjhZ98C7.mp4?v=1417688565555 - Rythmic Waves
+  http://cdn.calm.com/scenes/scene-UGH2oUBMyM.mp4?v=1417688537593 - Flowing Streams
 ================================================== -->
 <body>
+<video autoplay loop muted poster="assets/" id="background">
+    <source src="http://cdn.calm.com/scenes/scene-UGH2oUBMyM.mp4?v=1417688537593" type="video/mp4">
+</video>
 
-<!-- Carousel
-================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <!--       <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol> -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img class="first-slide"
-                 src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                 alt="First slide">
-            <div class="container">
+<div class="container">
+        <img class='centered-logo' style="width:50%" src="{% static 'assets/teamspirit.png' %}">
+    <!-- Trigger the modal with a button -->
+    <div class="h2" style="color: blue"><strong>Every remote agile team living in greatness</strong></div>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/login/" role="button">Sign In</a>
+        <a href="{% url 'sign_up' %}" class="btn btn-link btn-sm" role="button" style="color:blue">Sign
+            Up</a>
+    </p>
+</div>
 
-                <div class="carousel-caption">
-                    <img class='centered' src="{% static 'assets/landing_banner.jpg' %}" style="padding-top: 20px">
-                    <h1>Every remote agile team living in greatness.</h1>
-                    <p>TeamSpirit is an applicaiton used by agile teams implementing the Check In, Check Out and Passer
-                        Core Protocols from remote locations.</p>
-                    <p>
-                        <a class="btn btn-primary btn-block btn-lg" href="/login/" role="button">Sign In</a>
-                        <a href="{% url 'sign_up' %}" class="btn btn-primary btn-sm" role="button">Sign Up</a>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a> -->
-</div><!-- /.carousel -->
-
-
-<!-- Marketing messaging and featurettes
-================================================== -->
+<!-- Marketing messaging and featurettes================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
 <div class="container marketing">
-
     <!-- Three columns of text below the carousel -->
+
+    <div class="h3" style="color: blue" align="center"><strong>TeamSpirit is an application used by agile teams implementing the
+        CheckIn, CheckOut and Pass
+        Protocols from remote locations.</strong></div>
     <div class="row">
+
         <div class="col-lg-4">
-            <i class="fa fa-sign-in fa-5x" style="color: #337ab7"></i>
+            <i class="fa fa-sign-in fa-5x" style="color: blue"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-            <h2>Check In</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-                cursus magna.</p>
+        <div class="h2" style="color: blue"><strong>CheckIn</strong></div>
+            <div class="p" style="color: blue"><strong>Behavior characterized by high levels of engagement, substantial
+                presence, disclosure of self, and
+                receptivity to others.</strong></div>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <i class="fa fa-sign-out fa-5x" style="color: #337ab7"></i>
+            <i class="fa fa-sign-out fa-5x" style="color: blue"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-            <h2>Check Out</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-                mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh.</p>
+           <div class="h2" style="color: blue"><strong>CheckOut</strong></div>
+            <div class="p" style="color: blue"><strong>Absence due to awareness of low productivity or unresolved
+                conflicting commitments.</strong></div>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <i class="fa fa-user-times fa-5x" style="color: #337ab7"></i>
+            <i class="fa fa-user-times fa-5x" style="color: blue"></i>
             <!-- <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
-            <h2>Passer</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
+            <div class="h2" style="color: blue"><strong>Pass</strong></div>
+            <div class="p" style="color: blue"><strong>To expliciity choose to forgo something.</strong></div>
 
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -157,7 +139,7 @@
     <hr class="featurette-divider">
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2016 Team&#x2605;Spirit</p>
+        <p>&copy; 2016 Team Agile6&#x2605;</p>
     </footer>
 
 </div><!-- /.container -->
@@ -169,6 +151,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
     window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>')
+
+
+
+
 </script>
 {% load staticfiles %}
 <script src="{% static 'js/carousel.js' %}"></script>
