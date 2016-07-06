@@ -13,7 +13,15 @@
     background: url(polina.jpg) no-repeat;
     background-size: cover;
 }
-.container h1 {
+.container h2 {
     color: white;
-    padding-top: 200px;
+    font-family: 'La Belle Aurore', cursive;
+}
+
+h2 {
+font-family: 'La Belle Aurore', cursive;
+
+}
+.container marketng h2 {
+font-family: 'La Belle Aurore', cursive;
 }
