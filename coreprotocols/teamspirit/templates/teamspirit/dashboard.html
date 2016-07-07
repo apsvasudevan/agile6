@@ -28,6 +28,10 @@
     .nav-tabs {
         margin-bottom: 20px;
     }
+    #all_teams, #all, #id_ownedteams, #id_member, #opened, #closed{
+        color: black;
+        font-weight: bold;
+    }
     .popover {
         min-width: 500px;
         max-width: 1000px;
@@ -38,35 +42,46 @@
     }
 </style>
 
-<h1 class="featurette-heading" style="margin-top: 40px;"><span class="text-muted">Hi there, {{ request.user.first_name }}</span></h1>
+<h1 class="dashboard" style="margin-top: 40px;"><span class="text-muted">Hi there, {{ request.user.first_name }}</span></h1>
 
 <h3>{{context.motd.message }}</h3>
 
 <ul class="nav nav-tabs">
-    <li class="active" id="id_allteams"><a  data-toggle="tab" href="#all">All Teams</a></li>
+    <li class="active" id="id_allteams"><a id="all_teams" data-toggle="tab" href="#all">All Teams</a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id_ownedteams">Teams I Own
             <span class="caret"></span></a>
         <ul class="dropdown-menu" id="id_ownedteam_list">
+            {% if context.teams_i_own.count == 0 %}
+            <li><a href="{% url 'team_create' %}">Create a team</a></li>
+            {% else %}
             {% for t in context.teams_i_own %}
             <li><a id="id_ownedteam_name" data-toggle="tab" href="#own{{ t.id }}">{{ t.name }}</a></li>
             {% endfor %}
+            {% endif %}
         </ul>
     </li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id_member">Teams I Am A Member Of
             <span class="caret"></span></a>
         <ul class="dropdown-menu" id="id_member_list">
+            {% if context.teams_i_am_member_of.count < context.teams_i_own.count or context.teams_i_am_member_of.count == 0 %}
+            <li style="padding-left: 10px; padding-right: 10px;">Not a member of any teams</li>
+            {% else %}
             {% for t in context.teams_i_am_member_of %}
             <li><a id="id_member_teamname" data-toggle="tab" href="#mem{{ t.id }}">{{ t.name }}</a></li>
             {% endfor %}
+            {% endif %}
         </ul>
     </li>
-    <li id="open_sess"><a  data-toggle="tab" href="#opens">Open Sessions</a></li>
-    <li id="closed_sess"><a  data-toggle="tab" href="#closeds">Closed Sessions</a></li>
+    <li id="open_sess"><a  id="opened" data-toggle="tab" href="#opens">Open Sessions</a></li>
+    <li id="closed_sess"><a  id="closed"data-toggle="tab" href="#closeds">Closed Sessions</a></li>
 </ul>
 <div class="tab-content">
     <div id="all" class="tab-pane fade in active">
+        {% if context.teams_i_own.count == 0 or context.teams_i_own.count == None %}
+            <a href="{% url 'team_create' %}"><button class="btn-primary">Create Team</button></a>
+        {% else %}
         {% for t in context.teams_i_own %}
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -215,6 +230,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
     {% for t in context.teams_i_own %}
     <div id="own{{ t.id }}" class="panel panel-default tab-pane fade">
@@ -358,6 +374,9 @@
     {% endfor %}
 
     <div id="opens" class="tab-pane fade">
+        {% if context.teams_i_own.count == 0 and context.teams_i_am_member_of.count == 0 %}
+            <h4 style="color: white">No sessions available</h4>
+        {% else %}
         {% for t in context.teams_i_own %}
         {% for s in t.session_team.all %}
         {% if s.is_open %}
@@ -495,9 +514,13 @@
         {% endfor %}
 
         {% endfor %}
+        {% endif %}
     </div>
     <div id="closeds" class="tab-pane fade">
         {% for t in context.teams_i_own %}
+        {% if t.session_team.all.count == 0 %}
+        <h4 style="color: white">No sessions available</h4>
+        {% else %}
         {% for s in t.session_team.all %}
         {% if s.is_open == False %}
         <div class="panel panel-default">
@@ -521,6 +544,7 @@
         </div>
         {% endif %}
         {% endfor %}
+        {% endif %}
         {% endfor %}
         {% for t in context.teams_i_am_member_of %}
         {% for s in t.session_team.all %}
@@ -544,7 +568,6 @@
         </div>
         {% endif %}
         {% endfor %}
-
         {% endfor %}
     </div>
 
