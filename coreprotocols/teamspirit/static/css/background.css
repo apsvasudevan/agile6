@@ -46,3 +46,14 @@ text-shadow: 1px 1px 1px #000;
     position: absolute;
     top: 50%;
 }
+
+ body {
+    background-image: url("http://www.planwallpaper.com/static/images/simple_blue_background-wallpaper-1920x1200.jpg");
+    background-repeat: repeat-y;
+}
+
+.dashboard{
+    font-family: 'Indie Flower', cursive;
+    font-color: 'white';
+    text-shadow: 1px 1px 1px #000;
+}

@@ -4,7 +4,6 @@ from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 from teamspirit.models import Team
 
-
 class Test07UserAddRemoveSession(LiveServerTestCase):
 
     def setUp(self):

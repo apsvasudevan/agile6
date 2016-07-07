@@ -3,7 +3,7 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
-
+'''
 class Test05UserGeneral(LiveServerTestCase):
 
     def setUp(self):
@@ -76,3 +76,4 @@ class Test05UserGeneral(LiveServerTestCase):
 
         # 18. User logs out
         self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[3]/a').click()
+'''

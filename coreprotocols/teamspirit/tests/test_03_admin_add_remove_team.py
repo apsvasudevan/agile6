@@ -115,3 +115,4 @@ class Test03AdminAddRemoveTeam(LiveServerTestCase):
         success = self.browser.find_element_by_xpath('/html/body/div/ul/li')
         self.assertIn('Successfully deleted 1 team.', success.text)
 
+
