@@ -155,6 +155,8 @@ The tests files for our project can be view on github at - [See this link for th
 
 ##### Evidence that we are building our product test-first. There are at least 10 new unit tests in our test suite and at least 20 unit tests total. They all pass!
 
+* Code Coverage
+<img src="https://github.com/apsvasudevan/agile6/blob/master/coverage_report_1024.png?raw=true"/>
 
 
 ##### We have a Continuous Integration system running. The CI system automatically builds our code every time we merge to master. The CI system executes our unit tests every time it builds the code.
