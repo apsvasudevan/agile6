@@ -147,7 +147,7 @@ The tests files for our project can be view on github at - [See this link for th
 * [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
 
 
-##### Evidence that we continued pairing or mobbing on our code. The evidence is a photo and video of our team working together.
+##### Evidence that we continued pairing or mobbing on our code.
 
 * <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6-2.jpg?raw=true" width="70%" height="70%" />
 
