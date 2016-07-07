@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 
-
+'''
 class Test02AdminAddRemoveUser(LiveServerTestCase):
 
     def setUp(self):
@@ -78,3 +78,4 @@ class Test02AdminAddRemoveUser(LiveServerTestCase):
         # 15. Admin notified that the user has been deleted
         success = self.browser.find_element_by_xpath('/html/body/div/ul/li')
         self.assertIn('Successfully deleted 1 user.', success.text)
+'''
