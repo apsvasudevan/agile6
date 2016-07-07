@@ -149,7 +149,7 @@ The tests files for our project can be view on github at - [See this link for th
 
 ##### Evidence that we continued pairing or mobbing on our code. The evidence is a photo and video of our team working together.
 
-* <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6-2.jpg?raw=true" width="512px" height="384px" />
+* <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6-2.jpg?raw=true" width="10%" height="10%" />
 
 
 
