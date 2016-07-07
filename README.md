@@ -157,13 +157,19 @@ The tests files for our project can be view on github at - [See this link for th
 
 
 
-* You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your unit tests every time it builds the code.
+##### We have a Continuous Integration system running. The CI system automatically builds our code every time we merge to master. The CI system executes our unit tests every time it builds the code.
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_1.png?raw=true"/>
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_2.png?raw=true"/>
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_3.png?raw=true"/>
 
 
-* You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly.
+##### We have a Continuous Deployment system running. The CD system deploys our software to a production-like environment. The CD system executes additional tests of our software in the production-like environment. The CD system deploys our software to a live production environment. our live production environment works properly.
+
+* [See this link to view our live production site in action](http://teamspirit.grav.io/)
+
 <img src="https://github.com/apsvasudevan/agile6/blob/master/cd_1.png?raw=true"/>
+
+
+
 
 
