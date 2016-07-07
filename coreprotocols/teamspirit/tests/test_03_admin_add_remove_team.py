@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 
-
+'''
 class Test03AdminAddRemoveTeam(LiveServerTestCase):
 
     def setUp(self):
@@ -114,4 +114,5 @@ class Test03AdminAddRemoveTeam(LiveServerTestCase):
         # 22. Admin notified the session has been deleted
         success = self.browser.find_element_by_xpath('/html/body/div/ul/li')
         self.assertIn('Successfully deleted 1 team.', success.text)
+        '''
 
