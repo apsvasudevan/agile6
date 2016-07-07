@@ -1,8 +1,8 @@
 #!/bin/bash
 
 NAME="coreprotocols_app"                                 # Name of the application
-DJANGODIR=/opt/django-prod/current/coreprotocols/
-SOCKFILE=/opt/django-prod/current/coreprotocols/run/gunicorn.sock  # we will communicate using this unix socket
+DJANGODIR=/opt/django-prod/coreprotocols/
+SOCKFILE=/opt/django-prod/coreprotocols/run/gunicorn.sock  # we will communicate using this unix socket
 USER=user                                                # the user to run as
 GROUP=devops                                             # the group to run as
 NUM_WORKERS=5                                     # how many worker processes should Gunicorn spawn
@@ -28,7 +28,7 @@ exec /usr/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --user=$USER --group=$GROUP \
   --log-level=debug \
   --bind=unix:$SOCKFILE \
-  --pid=/opt/django-prod/current/coreprotocols/run/gunicorn.pid \
+  --pid=/opt/django-prod/coreprotocols/run/gunicorn.pid \
   --backlog=1024 \
   --worker-connections=2000 \
   --daemon

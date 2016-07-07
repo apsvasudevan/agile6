@@ -4,7 +4,7 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
-'''
+
 class Test01AdminGeneral(LiveServerTestCase):
 
     def setUp(self):
@@ -66,5 +66,5 @@ class Test01AdminGeneral(LiveServerTestCase):
         # 13. Admin verifies he is logged out
         result = self.browser.find_element_by_xpath('/html/body/div/div[3]/h1')
         self.assertIn('Logged out', result.text)
-'''
+
 
