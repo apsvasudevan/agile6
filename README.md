@@ -193,8 +193,18 @@ The tests files for our project can be view on github at - [See this link for th
 
 ##### Evidence that we are building our product test-first. There are at least 10 new unit tests in our test suite and at least 20 unit tests total. They all pass!
 
+We have a total of 100+ tests. They all pass. We also used code coverage. Here is a screenshot of our code coverage report and 10 of our NEW tests implemented.
 * Code Coverage
 <img src="https://github.com/apsvasudevan/agile6/blob/master/coverage_report_1024.png?raw=true"/>
+
+* 10 New Tests
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_10.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_11.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_12.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_13.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_14.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_15.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/test-screenshots/test_16.png?raw=true"/>
 
 
 ##### We have a Continuous Integration system running. The CI system automatically builds our code every time we merge to master. The CI system executes our unit tests every time it builds the code.
