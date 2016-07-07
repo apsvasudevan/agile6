@@ -25,34 +25,34 @@ class Test05UserGeneral(LiveServerTestCase):
         self.browser.find_element_by_id('id_signup').click()
 
         # 4. User confirms they are on the sign up page
-        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
+        result = self.browser.find_element_by_xpath('/html/body/div[2]/h3/strong')
         self.assertIn('Sign up using your email', result.text)
 
-        # 5. User fills in Username field
-        username_field = self.browser.find_element_by_name('username')
-        username_field.send_keys('user')
-
-        # 6. User fills in Email field
-        email_field = self.browser.find_element_by_name('email')
-        email_field.send_keys('user@somewhere.com')
-
-        # 7. User fills in Password field
-        password_field = self.browser.find_element_by_name('password')
-        password_field.send_keys('m3@nt!m3')
-
-        # 8. User fills in First Name field
-        first_name_field = self.browser.find_element_by_name('first_name')
+        # 5. User fills in First Name field
+        first_name_field = self.browser.find_element_by_id('id_first_name')
         first_name_field.send_keys('Some')
 
-        # 9. User fills in Last Name field
-        last_name_field = self.browser.find_element_by_name('last_name')
+        # 6. User fills in Last Name field
+        last_name_field = self.browser.find_element_by_id('id_last_name')
         last_name_field.send_keys('One')
+
+        # 7. User fills in Username field
+        username_field = self.browser.find_element_by_id('id_username')
+        username_field.send_keys('user')
+
+        # 8. User fills in Email field
+        email_field = self.browser.find_element_by_id('id_email')
+        email_field.send_keys('user@somewhere.com')
+
+        # 9. User fills in Password field
+        password_field = self.browser.find_element_by_id('id_password')
+        password_field.send_keys('m3@nt!m3')
 
         # 10. User checks box to accept Core Protocols
         self.browser.find_element_by_id('protocol1').click()
 
         # 11. User clicks on Submit button
-        self.browser.find_element_by_xpath('/html/body/div/div/div/div/form/input[2]').click()
+        self.browser.find_element_by_id('id_signup').click()
 
         # 12. User find themselves on the correct page
         self.assertIn(u'Team\u2605Spirit', self.browser.title)

@@ -4,8 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 from teamspirit.models import Team
 
-'''
-class Test04UserAddRemoveSession(LiveServerTestCase):
+class Test07UserAddRemoveSession(LiveServerTestCase):
 
     def setUp(self):
         User.objects.create_superuser('admin', 'admin@mysite.com', 'meantime')
@@ -18,6 +17,9 @@ class Test04UserAddRemoveSession(LiveServerTestCase):
         team.name = "Test Team"
         team.save()
         team.members.add(nick.id, truman.id, brian.id)
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
+        self.browser.get(self.live_server_url + '/')
 
 
     def tearDown(self):
@@ -69,4 +71,3 @@ class Test04UserAddRemoveSession(LiveServerTestCase):
         # 8. User verifies session is closed
         result = self.browser.find_element_by_xpath('/html/body')
         self.assertIn('session closed', result.text)
-'''
