@@ -363,7 +363,7 @@
         {% if s.is_open %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{ t.name }}</h3> <a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+                <h3 class="panel-title">{{ t.name }}</h3> <a href="{% url 'session_add' t.id %}">[add session]</a>
             </div>
             <div class="panel-body">
                 <li><h4>Sessions</h4></li>
@@ -502,7 +502,7 @@
         {% if s.is_open == False %}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{ t.name }}</h3> <a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+                <h3 class="panel-title">{{ t.name }}</h3><a href="{% url 'session_add' t.id %}">[add session]</a>
             </div>
             <div class="panel-body">
                 <li><h4>Sessions</h4></li>
