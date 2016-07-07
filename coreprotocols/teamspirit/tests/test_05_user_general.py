@@ -3,7 +3,7 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
-'''
+
 class Test05UserGeneral(LiveServerTestCase):
 
     def setUp(self):
@@ -26,7 +26,7 @@ class Test05UserGeneral(LiveServerTestCase):
 
         # 4. User confirms they are on the sign up page
         result = self.browser.find_element_by_xpath('/html/body/div[2]/h3/strong')
-        self.assertIn('Sign up using your email', result.text)
+        self.assertIn('Create a TeamSpirit Account', result.text)
 
         # 5. User fills in First Name field
         first_name_field = self.browser.find_element_by_id('id_first_name')
@@ -58,7 +58,7 @@ class Test05UserGeneral(LiveServerTestCase):
         self.assertIn(u'Team\u2605Spirit', self.browser.title)
 
         # 13. User logs out
-        self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[3]/a').click()
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/nav/div/div[2]/ul/li[3]/a').click()
 
         # 14. User Presses Sign In button
         self.browser.find_element_by_id('id_signin').click()
@@ -75,5 +75,4 @@ class Test05UserGeneral(LiveServerTestCase):
         self.browser.find_element_by_id('id_signin').click()
 
         # 18. User logs out
-        self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[3]/a').click()
-'''
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/nav/div/div[2]/ul/li[3]/a').click()
