@@ -3,42 +3,47 @@
 {% block content %}
 {% load app_filters %}
 <style>
-.alert-message {
-    width:200px;
-    height:20px;
-    height:auto;
-    position:fixed;
-    right:20px;
-    top:20px;
-    background-color: #ddd;
-    color: #333;
-    font-family: Calibri;
-    font-size: 20px;
-    padding:10px;
-    text-align:center;
-    border-radius: 2px;
-    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-    display: none;
-}
-.popover {
-    min-width: 500px;
-    max-width: 1000px;
-}
-h3 {
-    padding-bottom: 20px;
-}
+    .alert-message {
+        width:200px;
+        height:20px;
+        height:auto;
+        position:fixed;
+        right:20px;
+        top:20px;
+        background-color: #ddd;
+        color: #333;
+        font-family: Calibri;
+        font-size: 20px;
+        padding:10px;
+        text-align:center;
+        border-radius: 2px;
+        -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+        -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+        box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+        display: none;
+    }
+    .protocol-panel {
+        margin-top: 15px;
+    }
+    .nav-tabs {
+        margin-bottom: 20px;
+    }
+    .popover {
+        min-width: 500px;
+        max-width: 1000px;
+    }
+    h3 {
+        padding-bottom: 20px;
 
+    }
 </style>
 
-<h1 class="dashboard" style="margin-top: 10px;"><span class="text-muted" style="color:white;">Hi there, {{ request.user.first_name }}!</span>
-</h1>
+<h1 class="featurette-heading" style="margin-top: 40px;"><span class="text-muted">Hi there, {{ request.user.first_name }}</span></h1>
 
 <h3>{{context.motd.message }}</h3>
 
 <ul class="nav nav-tabs">
-    <li class="active" id="id_allteams"><a data-toggle="tab" href="#all">All Teams</a></li>
+    <li class="active" id="id_allteams"><a  data-toggle="tab" href="#all">All Teams</a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id_ownedteams">Teams I Own
             <span class="caret"></span></a>
@@ -57,56 +62,198 @@ h3 {
             {% endfor %}
         </ul>
     </li>
+    <li id="open_sess"><a  data-toggle="tab" href="#opens">Open Sessions</a></li>
+    <li id="closed_sess"><a  data-toggle="tab" href="#closeds">Closed Sessions</a></li>
 </ul>
 <div class="tab-content">
     <div id="all" class="tab-pane fade in active">
         {% for t in context.teams_i_own %}
-        <div>
-            <h3>{{ t.name }}</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3> <a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+            </div>
+            <div class="panel-body">
+                <li><h4>Members</h4></li>
+                <ul>
+                    {% for m in t.members.all %}
+                    <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
+                    {% endfor %}
+                </ul>
+                <li><h4>Sessions</h4></li>
+                <ul class="session">
+                    {% for s in t.session_team.all %}
+                    <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}
+                        <button id="id_allteams_stats"
+                                type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-container="body"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+                        <!--
+                            {% for x in s.session_state_session.all %}
+                            user: {{ x.user.username }}<br/>
+                            state: {{ x.state}}<br/>
+                            time: {{ x.timestamp}}<br/>
+                            <br/>
+                            {% endfor %}
+                        -->
+                        {% if s.is_open %}
+                        <a id="id_close_session" href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
+
+                        <div style="width: 800px;">
+                            <div class="protocol-panel" style="float: left; width: 400px;">
+
+                                <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                        <input id="check-in-comments1" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-warning" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Check Out Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-info" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Passer Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br style="clear: left;" />
+                        </div>
+
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        {% for t in context.teams_i_am_member_of %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <li><h4>Members</h4></li>
+                <ul>
+                    {% for m in t.members.all %}
+                    <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
+                    {% endfor %}
+                </ul>
+                <li><h4>Sessions</h4></li>
+                <ul>
+                    {% for s in t.session_team.all %}
+                    <li>{{ s.start_time }} - {{ s.name }}
+                        <button id="id_ownedteams_stats" type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+
+                        {% if s.is_open %}
+
+                        <div style="width: 800px;">
+                            <div class="protocol-panel" style="float: left; width: 400px;">
+
+                                <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                        <input id="check-in-comments2" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-warning" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Check Out Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-info" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Passer Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br style="clear: left;" />
+                        </div>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% for t in context.teams_i_own %}
+    <div id="own{{ t.id }}" class="panel panel-default tab-pane fade">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ t.name }}</h3> <a href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+        </div>
+        <div class="panel-body">
             <li><h4>Members</h4></li>
             <ul>
                 {% for m in t.members.all %}
                 <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
                 {% endfor %}
-                <li><a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;</li>
             </ul>
             <li><h4>Sessions</h4></li>
             <ul class="session">
                 {% for s in t.session_team.all %}
-                <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}<br><br>
-                    <!--
-                        {% for x in s.session_state_session.all %}
-                        user: {{ x.user.username }}<br/>
-                        state: {{ x.state}}<br/>
-                        time: {{ x.timestamp}}<br/>
-                        <br/>
-                        {% endfor %}
-                    -->
+                <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}
+                    <button id="id_member_stats"
+                            type="button" class="btn btn btn-danger"
+                            data-html="true"
+                            data-toggle="popover"
+                            data-original-title=""
+                            title="Session Stats"
+                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+
+
                     {% if s.is_open %}
+                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Close Session</button>
 
                     <div style="width: 800px;">
                         <div class="protocol-panel" style="float: left; width: 400px;">
 
-                            <div class=" protocol-panel panel panel-success" style="max-width: 395px">
-                                <div class="panel-heading"><h3 class="panel-title">Check In Protocol</h3></div>
+                            <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1"
-                                            data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1"
-                                            data-emotion="Glad" class="btn btn-success emotion-button" type="submit">
-                                        Glad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1"
-                                            data-emotion="Mad" class="btn btn-success emotion-button" type="submit">Mad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments1"
-                                            data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">
-                                        Afraid
-                                    </button>
-                                    <input id="check-in-comments1" type="text" class="form-control"
-                                           placeholder="Enter your comments before checking in."
-                                           aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments3" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments3" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments3" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments3" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                    <input id="check-in-comments3" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
                                 </div>
                             </div>
                         </div>
@@ -117,9 +264,7 @@ h3 {
                                     <h3 class="panel-title">Check Out Protocol</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button"
-                                            type="submit">Check Out
-                                    </button>
+                                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                                 </div>
                             </div>
                         </div>
@@ -127,43 +272,29 @@ h3 {
                         <div style="float: left; width: 195px;">
                             <div class="panel protocol-panel panel-info" style="max-width: 200px">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Pass Protocol</h3>
+                                    <h3 class="panel-title">Passer Protocol</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">
-                                        Pass
-                                    </button>
+                                    <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                                 </div>
                             </div>
                         </div>
-                        <br style="clear: left;"/>
+                        <br style="clear: left;" />
                     </div>
 
-                    <a id="id_close_session" href="/team/session/close/?session_id={{s.id}}">
-                        <button class="btn btn-primary" type="submit">Close Session</button>
-                    </a>
                     {% endif %}
-                    <button id="id_allteams_stats"
-                            onclick="myReload()"
-                            type="button" class="btn btn btn-danger"
-                            data-html="true"
-                            data-toggle="popover"
-                            data-container="body"
-                            data-original-title=""
-                            title="Session Stats"
-                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>
-                        Stats!
-                    </button>
-
                 </li>
                 {% endfor %}
-                <li><a href="{% url 'session_add' t.id %}">[add session]</a></li>
             </ul>
         </div>
-        {% endfor %}
-        {% for t in context.teams_i_am_member_of %}
-        <div>
-            <h3>{{ t.name }}</h3>
+    </div>
+    {% endfor %}
+    {% for t in context.teams_i_am_member_of %}
+    <div id="mem{{ t.id }}" class="panel panel-default tab-pane fade">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ t.name }}</h3>
+        </div>
+        <div class="panel-body">
             <li><h4>Members</h4></li>
             <ul>
                 {% for m in t.members.all %}
@@ -174,31 +305,24 @@ h3 {
             <ul>
                 {% for s in t.session_team.all %}
                 <li>{{ s.start_time }} - {{ s.name }}
+                    <button id="id_stats2"
+                            type="button" class="btn btn btn-danger"
+                            data-html="true"
+                            data-toggle="popover"
+                            data-original-title=""
+                            title="Session Stats"
+                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
                     {% if s.is_open %}
-
                     <div style="width: 800px;">
                         <div class="protocol-panel" style="float: left; width: 400px;">
 
-                            <div class=" protocol-panel panel panel-success" style="max-width: 395px">
-                                <div class="panel-heading"><h3 class="panel-title">Check In Protocol</h3></div>
+                            <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments2"
-                                            data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments2"
-                                            data-emotion="Glad" class="btn btn-success emotion-button" type="submit">
-                                        Glad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments2"
-                                            data-emotion="Mad" class="btn btn-success emotion-button" type="submit">Mad
-                                    </button>
-                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments2"
-                                            data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">
-                                        Afraid
-                                    </button>
-                                    <input id="check-in-comments2" type="text" class="form-control"
-                                           placeholder="Enter your comments before checking in."
-                                           aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments4" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments4" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments4" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                    <button data-session-id={{s.id}} data-comments-id="check-in-comments4" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                    <input id="check-in-comments4" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
                                 </div>
                             </div>
                         </div>
@@ -209,9 +333,7 @@ h3 {
                                     <h3 class="panel-title">Check Out Protocol</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button"
-                                            type="submit">Check Out
-                                    </button>
+                                    <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
                                 </div>
                             </div>
                         </div>
@@ -219,200 +341,213 @@ h3 {
                         <div style="float: left; width: 195px;">
                             <div class="panel protocol-panel panel-info" style="max-width: 200px">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Pass Protocol</h3>
+                                    <h3 class="panel-title">Passer Protocol</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">
-                                        Pass
-                                    </button>
+                                    <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
                                 </div>
                             </div>
                         </div>
-                        <br style="clear: left;"/>
-                    </div>
-                    {% endif %}
-                    <button id="id_ownedteams_stats" type="button" class="btn btn btn-danger"
-                            data-html="true"
-                            data-toggle="popover"
-                            data-original-title=""
-                            title="Session Stats"
-                            data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>
-                        Stats!
-                    </button>
+                        <br style="clear: left;" />
+                    </div>{% endif %}
                 </li>
                 {% endfor %}
             </ul>
         </div>
+    </div>
+    {% endfor %}
+
+    <div id="opens" class="tab-pane fade">
+        {% for t in context.teams_i_own %}
+        {% for s in t.session_team.all %}
+        {% if s.is_open %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3> <a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+            </div>
+            <div class="panel-body">
+                <li><h4>Sessions</h4></li>
+                <ul class="session">
+                    <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}
+                        <button id="id_allteams_stats"
+                                type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-container="body"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+                        <!--
+                            {% for x in s.session_state_session.all %}
+                            user: {{ x.user.username }}<br/>
+                            state: {{ x.state}}<br/>
+                            time: {{ x.timestamp}}<br/>
+                            <br/>
+                            {% endfor %}
+                        -->
+
+                        <a id="id_close_session" href="/team/session/close/?session_id={{s.id}}"><button class="btn btn-primary" type="submit">Close Session</button></a>
+
+                        <div style="width: 800px;">
+                            <div class="protocol-panel" style="float: left; width: 400px;">
+
+                                <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments1" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                        <input id="check-in-comments1" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-warning" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Check Out Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-info" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Passer Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br style="clear: left;" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        {% for t in context.teams_i_am_member_of %}
+        {% for s in t.session_team.all %}
+        {% if s.is_open %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <li><h4>Sessions</h4></li>
+                <ul>
+                    <li>{{ s.start_time }} - {{ s.name }}
+                        <button id="id_ownedteams_stats" type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+
+                        <div style="width: 800px;">
+                            <div class="protocol-panel" style="float: left; width: 400px;">
+
+                                <div class=" protocol-panel panel panel-success" style="max-width: 395px; margin-top: 0px;"> <div class="panel-heading"> <h3 class="panel-title">Check In Protocol</h3> </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Glad"   class="btn btn-success emotion-button" type="submit">Glad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Mad"    class="btn btn-success emotion-button" type="submit">Mad</button>
+                                        <button data-session-id={{s.id}} data-comments-id="check-in-comments2" data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">Afraid</button>
+                                        <input id="check-in-comments2" type="text" class="form-control" placeholder="Enter your comments before checking in." aria-describedby="basic-addon1" style="margin-top: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-warning" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Check Out Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Check Out</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="float: left; width: 195px;">
+                                <div class="panel protocol-panel panel-info" style="max-width: 200px">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Passer Protocol</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br style="clear: left;" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
         {% endfor %}
     </div>
-    {% for t in context.teams_i_own %}
-    <div id="own{{ t.id }}" class="tab-pane fade">
-        <h3>{{ t.name }}</h3>
-        <li><h4>Members</h4></li>
-        <ul>
-            {% for m in t.members.all %}
-            <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
-            {% endfor %}
-            <li><a href="{% url 'member_add' t.id %}">[add member]</a>&nbsp;</li>
-        </ul>
-        <li><h4>Sessions</h4></li>
-        <ul class="session">
-            {% for s in t.session_team.all %}
-            <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}<br><br>
-                {% if s.is_open %}
+    <div id="closeds" class="tab-pane fade">
+        {% for t in context.teams_i_own %}
+        {% for s in t.session_team.all %}
+        {% if s.is_open == False %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3> <a id="id_add_member" href="{% url 'member_add' t.id %}">[add member]</a> <a href="{% url 'session_add' t.id %}">[add session]</a>
+            </div>
+            <div class="panel-body">
+                <li><h4>Sessions</h4></li>
+                <ul class="session">
+                    <li class="dashboard-li"><strong>{{ s.name }}</strong> - {{ s.start_time }}
+                        <button id="id_allteams_stats"
+                                type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-container="body"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        {% for t in context.teams_i_am_member_of %}
+        {% for s in t.session_team.all %}
+        {% if s.is_open == False %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ t.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <li><h4>Sessions</h4></li>
+                <ul>
+                    <li>{{ s.start_time }} - {{ s.name }}
+                        <button id="id_ownedteams_stats" type="button" class="btn btn btn-danger"
+                                data-html="true"
+                                data-toggle="popover"
+                                data-original-title=""
+                                title="Session Stats"
+                                data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>Stats!</button>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
 
-                <div style="width: 800px;">
-                    <div class="protocol-panel" style="float: left; width: 400px;">
-
-                        <div class=" protocol-panel panel panel-success" style="max-width: 395px">
-                            <div class="panel-heading"><h3 class="panel-title">Check In Protocol</h3></div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments3"
-                                        data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments3"
-                                        data-emotion="Glad" class="btn btn-success emotion-button" type="submit">Glad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments3"
-                                        data-emotion="Mad" class="btn btn-success emotion-button" type="submit">Mad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments3"
-                                        data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">
-                                    Afraid
-                                </button>
-                                <input id="check-in-comments3" type="text" class="form-control"
-                                       placeholder="Enter your comments before checking in."
-                                       aria-describedby="basic-addon1" style="margin-top: 10px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="float: left; width: 195px;">
-                        <div class="panel protocol-panel panel-warning" style="max-width: 200px">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Check Out Protocol</h3>
-                            </div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">
-                                    Check Out
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="float: left; width: 195px;">
-                        <div class="panel protocol-panel panel-info" style="max-width: 200px">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Pass Protocol</h3>
-                            </div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <br style="clear: left;"/>
-                </div>
-
-                <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">Close Session
-                </button>
-                {% endif %}
-                <button id="id_member_stats"
-                        type="button" class="btn btn btn-danger"
-                        data-html="true"
-                        data-toggle="popover"
-                        data-original-title=""
-                        title="Session Stats"
-                        data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>
-                    Stats!
-                </button>
-            </li>
-            {% endfor %}
-            <li><a href="{% url 'session_add' t.id %}">[add session]</a></li>
-        </ul>
+        {% endfor %}
     </div>
-    {% endfor %}
-    {% for t in context.teams_i_am_member_of %}
-    <div id="mem{{ t.id }}" class="tab-pane fade">
-        <h3>{{ t.name }}</h3>
-        <li><h4>Members</h4></li>
-        <ul>
-            {% for m in t.members.all %}
-            <li>({{ m.username }}) {{ m.first_name }} {{ m.last_name }}</li>
-            {% endfor %}
-        </ul>
-        <li><h4>Sessions</h4></li>
-        <ul>
-            {% for s in t.session_team.all %}
-            <li>{{ s.start_time }} - {{ s.name }}
-                {% if s.is_open %}
-                <div style="width: 800px;">
-                    <div class="protocol-panel" style="float: left; width: 400px;">
 
-                        <div class=" protocol-panel panel panel-success" style="max-width: 395px">
-                            <div class="panel-heading"><h3 class="panel-title">Check In Protocol</h3></div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments4"
-                                        data-emotion="Sad" class="btn btn-success emotion-button" type="submit">Sad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments4"
-                                        data-emotion="Glad" class="btn btn-success emotion-button" type="submit">Glad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments4"
-                                        data-emotion="Mad" class="btn btn-success emotion-button" type="submit">Mad
-                                </button>
-                                <button data-session-id={{s.id}} data-comments-id="check-in-comments4"
-                                        data-emotion="Afraid" class="btn btn-success emotion-button" type="submit">
-                                    Afraid
-                                </button>
-                                <input id="check-in-comments4" type="text" class="form-control"
-                                       placeholder="Enter your comments before checking in."
-                                       aria-describedby="basic-addon1" style="margin-top: 10px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="float: left; width: 195px;">
-                        <div class="panel protocol-panel panel-warning" style="max-width: 200px">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Check Out Protocol</h3>
-                            </div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-warning check-out-button" type="submit">
-                                    Check Out
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="float: left; width: 195px;">
-                        <div class="panel protocol-panel panel-info" style="max-width: 200px">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Pass Protocol</h3>
-                            </div>
-                            <div class="panel-body">
-                                <button data-session-id={{s.id}} class="btn btn-info pass-button" type="submit">Pass
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <br style="clear: left;"/>
-                </div>
-                {% endif %}
-                <button id="id_stats2"
-                        type="button" class="btn btn btn-danger"
-                        data-html="true"
-                        data-toggle="popover"
-                        data-original-title=""
-                        title="Session Stats"
-                        data-content='<div><ul>{% if context.session_states|get_stats:s.id == None %} <li>No team members in this session.</li> {% else %}{% for ss in context.session_states|get_stats:s.id %}<li><b>{{ ss.user.username }}</b>-<b>{{ ss.state }}</b>- {{ ss.comments }} - {{ ss.timestamp }}</li>{% endfor %}{% endif %}</ul></div>'>
-                    Stats!
-                </button>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
 </div>
 
 <div class="alert-message welcome">
@@ -425,12 +560,6 @@ h3 {
     {{ request.user.first_name }} has passed.
 </div>
 
-<script>
-function myReload() {
-    location.reload();
-}
-
-</script>
 {% endblock %}
 
 {% block jquery%}
