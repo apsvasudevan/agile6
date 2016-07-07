@@ -140,7 +140,7 @@ The tests files for our project can be view on github at - [See this link for th
 
 
 
-##### Continue sprinting
+##### Continue sprinting - 07/07/16
 
 
 ##### What did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members did which activities.
@@ -194,6 +194,9 @@ The tests files for our project can be view on github at - [See this link for th
 ##### Evidence that we are building our product test-first. There are at least 10 new unit tests in our test suite and at least 20 unit tests total. They all pass!
 
 We have a total of 100+ tests. They all pass. We also used code coverage. Here is a screenshot of our code coverage report and 10 of our NEW tests implemented.
+
+* [To view our entire test suite, please visit this link](https://github.com/apsvasudevan/agile6/tree/master/coreprotocols/teamspirit/tests)
+
 * Code Coverage
 <img src="https://github.com/apsvasudevan/agile6/blob/master/coverage_report_1024.png?raw=true"/>
 
