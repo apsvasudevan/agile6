@@ -148,12 +148,22 @@ The tests files for our project can be view on github at - [See this link for th
 
 
 ##### Evidence that we continued pairing or mobbing on our code.
-
 * <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6-2.jpg?raw=true" width="70%" height="70%" />
 
 
 
 
+##### Evidence that we are building our product test-first. There are at least 10 new unit tests in our test suite and at least 20 unit tests total. They all pass!
 
+
+
+* You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your unit tests every time it builds the code.
+<img src="https://github.com/apsvasudevan/agile6/blob/master/ci_1.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/ci_2.png?raw=true"/>
+<img src="https://github.com/apsvasudevan/agile6/blob/master/ci_3.png?raw=true"/>
+
+
+* You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly.
+<img src="https://github.com/apsvasudevan/agile6/blob/master/cd_1.png?raw=true"/>
 
 
