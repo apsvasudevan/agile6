@@ -142,6 +142,46 @@ The tests files for our project can be view on github at - [See this link for th
 
 ##### Continue sprinting
 
+
+##### What did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members did which activities.
+
+* <strong>Vasu - [Team Member Checkin, Checkout, Passer] - </strong> Did pair programming with Christian and completed the test and implementation of CRUD Module of Team member Checkin, Checkout and Passer stories. 
+* <strong>Truman -  [Product Branding] - </strong>Pair Programmed with Brian using TDD.  Updated UI Pages for Landing.html, Dashboard.html, SignIn.html, SignUp, html. Pair Programmed with Oyin. HTML/CSS
+* <strong>Brian -	</strong>Wrote tests for all features, pair programmed with Truman to troubleshoot some issues.
+* <strong>Nick -  [User Sign-Up][Product Branding] - </strong>I wrote the form validation logic for the user sign up form using the parsley javascript library. I improved the product branding by modifying the HTML/CSS layout for the dashboard.
+* <strong>Oyin - [Product Branding, Team Member Checkin, Checkout, CI/CD]</strong> Improved the functionality and design on the dashboard.html page where team members can check-in, check-out, and check stats of a session. Made some bug fixes. Configured drone.io and worked on getting it’s functionality.
+* <strong>Christian - [Team Member Checkin, Checkout, Passer]</strong> Vasu and I wrote code that wired check in, pass, and checkout to the models. We also worked together to write tests for the models and views to increase our code coverage. 
+
+
+
+##### What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities.
+
+* <strong>Vasu - [Team Member Checkin, Checkout, Passer] - </strong> Implement event handlers for emotion buttons. Clean up the code and final testing.
+* <strong>Truman -  [Product Branding] - </strong> Continue testing and debugging.  Prepare for demonstration.
+* <strong>Brian -	</strong>Write more unit tests and add code coverage reports, pair programming 
+* <strong>Nick - [Product Branding] - </strong> I will use pair programming with Oyin to complete the dashboard HTML/CSS UI tasks for the stats feature. 
+* <strong>Oyin - [Product Branding]</strong> Work with Nick and Truman on any final improvements to the dashboard and begin demo preparation.
+* <strong>Christian - </strong>  Final testing and presentation preparation/review.
+
+
+##### Do you see any impediment that prevents me or the Development Team from meeting the Sprint Goal? What are the impediments? What is your impediment removal plan?
+* <strong>Vasu</strong> - 
+	<strong>Impediment:</strong> Continuous Delivery implementation is challenging when learning a new application framework (Django)
+	<strong>Removal:</strong> I found drone.io and studied it enough to use it for our CD system.  
+* <strong>Truman</strong> - no impediments. 
+* <strong>Brian</strong> - 
+<strong>Impediment:</strong> We needed a front end testing suite and nobody was familiar with one. 
+<strong>Removal:</strong>  I spent time to learn and implement front end testing using Selenium.
+* <strong>Nick</strong> - 
+<strong>Impediment:</strong> The javascript related plugins of bootstrap are not currently configured and may be tricky to set up.
+<strong>Removal:</strong> Installation of additional libraries after reviewing the related bootstrap documentation. 
+* <strong>Oyin -</strong>  <strong>Impediment:</strong> Had trouble using Heroku to pair with drone.io for CD. 
+<strong>Removal:</strong> Vasu helped find another solution by using SSH to connect to DigitalOcean for CD instead.
+* <strong>Christian -</strong> 
+	<strong>Impediment:</strong> The team is not familiar with our software stack.
+	<strong>Removal:</strong> I offered training to the team in order to familiarize them with Django and front end integration.
+
+
 ##### Updated Sprint Backlog task board and burndown chart.
 * [See this link for the sprint backlog](https://trello.com/b/EE5wZaYY/product-backlog)
 * [See this link for the burndown chart](https://docs.google.com/spreadsheets/d/1g1FkffUGeN-xQQcEt1gQs_WUYnAhA_Q2_Pc9k8h8XLU/edit#gid=1685512752)
@@ -149,8 +189,6 @@ The tests files for our project can be view on github at - [See this link for th
 
 ##### Evidence that we continued pairing or mobbing on our code.
 * <img src="https://github.com/apsvasudevan/agile6/blob/master/mob_programming_agile6-2.jpg?raw=true" width="70%" height="70%" />
-
-
 
 
 ##### Evidence that we are building our product test-first. There are at least 10 new unit tests in our test suite and at least 20 unit tests total. They all pass!
