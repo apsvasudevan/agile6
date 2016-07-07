@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from time import sleep
 
-
+'''
 class Test10UserCheckIn(LiveServerTestCase):
 
     def setUp(self):
@@ -175,3 +175,4 @@ class Test10UserCheckIn(LiveServerTestCase):
 
         # 29. User returns to dashboard
         self.browser.get(self.live_server_url + '/dashboard')
+'''

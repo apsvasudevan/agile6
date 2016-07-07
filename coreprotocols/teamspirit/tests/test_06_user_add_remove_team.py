@@ -3,8 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 
-'''
-class Test03UserAddRemoveTeam(LiveServerTestCase):
+class Test06UserAddRemoveTeam(LiveServerTestCase):
 
     def setUp(self):
         User.objects.create_superuser('admin', 'admin@mysite.com', 'meantime')
@@ -38,10 +37,10 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
         self.browser.find_element_by_id('id_signin').click()
 
         # 6. User Clicks create team button
-        self.browser.find_element_by_xpath('/html/body/div/div/nav/div/div[2]/ul/li[2]/a').click()
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/nav/div/div[2]/ul/li[2]/a').click()
 
         # 7. User is on the Create Team page
-        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
+        result = self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div/h3')
         self.assertIn('Create Team', result.text)
 
         # 8. User enters team name
@@ -49,7 +48,7 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
         inputbox.send_keys('Test Team')
 
         # 9. User hits Submit to create team
-        self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[3]').click()
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div/form/input[3]').click()
 
         # 10. User gets page to add team members
         result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
@@ -67,17 +66,16 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
         self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[2]').click()
 
         # 13. User presses Cancel to bypass creating a session
-        self.browser.find_element_by_xpath('/html/body/div/div/div/a/button').click()
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div/a/button').click()
 
         # 14. User checks to see if Team is listed as one they own
-        result = self.browser.find_element_by_xpath('/html/body/div/div/ul/li[2]/ul/li')
+        result = self.browser.find_element_by_xpath('/html/body/div/div[2]/div/ul/li[2]/ul/li/a')
         self.assertIn('Test Team', result.text)
 
-        # 15. User selects team
-        self.browser.find_element_by_xpath('/html/body/div/div/ul/li[2]/ul/li/a').click()
+
 
         # 16. User selects to modify teams
-        self.browser.find_element_by_xpath('/html/body/div/div/div/div/ul[1]/li[4]/a').click()
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div[1]/div[1]/div/div[1]/a[1]').click()
 
         # 17. User verifies he is on the change team page
         result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
@@ -91,4 +89,3 @@ class Test03UserAddRemoveTeam(LiveServerTestCase):
 
         # 19. User presses Cancel button to cancel out of creating a session
         self.browser.find_element_by_xpath('/html/body/div/div/div/a/button').click()
-'''

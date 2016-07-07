@@ -44,30 +44,30 @@ class Test07UserAddRemoveSession(LiveServerTestCase):
         # 5. User clicks to Sign In button
         self.browser.find_element_by_id('id_signin').click()
 
-        # User selects team
-        self.browser.find_element_by_xpath('/html/body/div/div/ul/li[2]/ul/li/a').click()
+        # 6. User selects team
+        self.browser.find_element_by_id('id_ownedteam_name').click()
 
-        # 1. User clicks to add a new session
-        self.browser.find_element_by_xpath('/html/body/div/div/div/div/ul[2]/li/a').click()
+        # 7. User clicks to add a new session
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div[1]/div[2]/div[1]/a[2]').click()
 
-        # 2. User sees the session page
-        result = self.browser.find_element_by_xpath('/html/body/div/div/div/h3')
+        # 8. User sees the session page
+        result = self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div/h3')
         self.assertIn('Create session for Team: Test Team', result.text)
 
-        # 4. User enters "Test Session" as the session name
+        # 9. User enters "Test Session" as the session name
         inputbox = self.browser.find_element_by_id('id_name')
         inputbox.send_keys('Test Session')
 
-        # 5. User clicks "Submit"
-        self.browser.find_element_by_xpath('/html/body/div/div/div/form/input[2]').click()
+        # 10. User clicks "Submit"
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div/form/input[2]').click()
 
-        # 6. User checks to make sure "Test Session" was create successfully
-        result = self.browser.find_element_by_xpath('/html/body/div/div/div[1]/div[1]/div/ul[2]/li[1]/strong')
+        # 11. User checks to make sure "Test Session" was create successfully
+        result = self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div[1]/div[1]/div/div[2]/ul[2]/li/strong')
         self.assertIn('Test Session', result.text)
 
-        # 7. User closes session
-        self.browser.find_element_by_xpath('/html/body/div/div/div[1]/div[1]/div/ul[2]/li[1]/a[1]/button').click()
+        # 12. User closes session
+        self.browser.find_element_by_xpath('/html/body/div/div[2]/div/div[1]/div[1]/div/div[2]/ul[2]/li/a/button').click()
 
-        # 8. User verifies session is closed
+        # 13. User verifies session is closed
         result = self.browser.find_element_by_xpath('/html/body')
         self.assertIn('session closed', result.text)
