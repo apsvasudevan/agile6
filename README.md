@@ -208,13 +208,18 @@ We have a total of 100+ tests. They all pass. We also used code coverage. Here i
 
 
 ##### We have a Continuous Integration system running. The CI system automatically builds our code every time we merge to master. The CI system executes our unit tests every time it builds the code.
+* For continuous integration (CI), we have hooked up our github repository to an online saas CI provider, drone.io. 
+* Drone is configured to listen for commits on the repo and will trigger a build of the application which includes running all of the unit test cases and code coverage.
+* If any test fails, feedback would be provided to the development team to fix the tests. 
+* If all tests pass, then the tool will create the deployable artifact. 
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_1.png?raw=true"/>
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_2.png?raw=true"/>
 <img src="https://github.com/apsvasudevan/agile6/blob/master/ci_3.png?raw=true"/>
 
 
 ##### We have a Continuous Deployment system running. The CD system deploys our software to a production-like environment. The CD system executes additional tests of our software in the production-like environment. The CD system deploys our software to a live production environment. our live production environment works properly.
-
+* Drone.io is used for the continuous deployment. It is hooked up with the teamspirit.grav.io server on the digital ocean cloud provider.
+* On a successful build of the artifact in the CI step, the artifact will be deployed immediately to the server thus achieving continuous delivery with high quality. 
 * [See this link to view our live production site in action](http://teamspirit.grav.io/)
 
 <img src="https://github.com/apsvasudevan/agile6/blob/master/cd_1.png?raw=true"/>
